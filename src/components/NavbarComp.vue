@@ -1,12 +1,12 @@
 <template lang="">
 <nav>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
      
     </a>  
         
 <div class="nav d-flex justify-content-center align-items-center">
-    <img src="https://i.postimg.cc/vmZb6BwS/23-removebg-preview.png" alt="Bootstrap" width="80" height="" class="logo">
-    <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <img src="https://i.postimg.cc/vmZb6BwS/23-removebg-preview.png" alt="Bootstrap" width="80" height="" >
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
   
   
     <a class="nav-link" href="#">About Us</a>
@@ -20,8 +20,6 @@
   
     <a class="nav-link" href="#">Admin</a>
   
-  
-    <a class="nav-link" aria-disabled="true"></a>
 
 </div>
 </nav>
@@ -51,13 +49,9 @@ export default {
     align-items: center;
 }
 
-.img.logo {
-    padding-right: 100px;
-}
-
 .nav-link {
     color: #995C23;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     -webkit-text-stroke: 0.2px #E4C2A2;
 }

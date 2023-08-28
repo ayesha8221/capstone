@@ -18,13 +18,6 @@ export default {
 
 
 <style>
-#app{
-
-  body{
-  height: 100vh;
-  width: 100%;
-}
-}
 
 
 

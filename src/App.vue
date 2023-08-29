@@ -18,7 +18,9 @@ export default {
 
 
 <style>
-
+.example::-webkit-scrollbar {
+  display: none;
+}
 
 
 </style>

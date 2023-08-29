@@ -15,8 +15,7 @@
   <div class="conta">
   <img src="https://i.postimg.cc/mrJB3nqC/istockphoto-1168964829-612x612.jpg" alt="Snow" class="beans">
   <button class="bttn">Learn More</button>
-  <p class="About">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum</p>
+  <p class="About">Welcome to Roast & Revelry, where passion for quality meets a commitment to community and sustainability. At [Your Ecommerce Name], we take immense pride in crafting an exceptional coffee experience that not only tantalizes your taste buds but also resonates with your values.</p>
 </div>
 </div>
 <div class="featured">
@@ -24,27 +23,34 @@ molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum</p>
     <h4>Featured products</h4>
   </div>
   <div class="container-fluid d-flex justify-content-center align-items-center">
-    <div class="card ">
-  <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" alt="Avatar" style="width:50%">
-  <div class="container">
-    <p class="name">Name</p>
-    <button>View More</button> 
-  </div>
-</div>
-  <div class="card">
-  <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" alt="Avatar" style="width:50%">
-  <div class="container">
-    <p class="name">Name</p>
-    <button>View More</button> 
-  </div>
-</div>
-  <div class="card">
-  <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" alt="Avatar" style="width:50%">
-  <div class="container">
-    <p class="name">Name</p>
-    <button class="view">View More</button>
-  </div>
-</div>
+    <div class="container">
+    <div class="card mx-1 my-2 one" id="body">
+        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:230px" class="picture" />
+        <h3>Name</h3>
+        <button v-on:click="addToCart" class="addbtn">View more</button>
+        </div>
+        </div>
+    <div class="container">
+    <div class="card mx-1 my-2 two" id="body">
+        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:230px" class="picture" />
+        <h3>Name</h3>
+        <button v-on:click="addToCart" class="addbtn">View more</button>
+        </div>
+        </div>
+    <div class="container">
+    <div class="card mx-1 my-2 three" id="body">
+        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:250px" class="picture" />
+        <h3>Name</h3>
+        <button v-on:click="addToCart" class="addbtn">View more</button>
+        </div>
+        </div>
+    <div class="container">
+    <div class="card mx-1 my-2 four" id="body">
+        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:250px" class="picture" />
+        <h3>Name</h3>
+        <button v-on:click="addToCart" class="addbtn">View more</button>
+        </div>
+        </div>
 </div>
   </div>
   
@@ -127,11 +133,11 @@ p {
 }
 
 /* Clearfix (clear floats) */
-.row::after {
+/* .row::after {
   content: "";
   clear: both;
   display: table;
-}
+} */
 .beans{
   height:400px;
   float: right;
@@ -170,7 +176,7 @@ p.About {
 
 .featured {
   background-color: #995C23;
-  height: 600px;
+  height: 650px;
   text-align: center;
   padding-top: 50px;
 }
@@ -183,23 +189,25 @@ h4 {
   padding-bottom: 50px;
 }
 
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 250px;
-  height: 300px;
-  background-color: #482505;
+#body {
+  height: 400px;
+  width: 300px;
 }
 
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.card.mx-1.my-2.two {
+  background-color: #3C6866;
 }
 
-.name, .price {
-  font-size: 20px;
-  font-weight: bold;
+.card.mx-1.my-2.one {
+  background-color: #462507;
+}
+
+.card.mx-1.my-2.three {
+  background-color: #E4C2A2;
+}
+
+.card.mx-1.my-2.four {
+  background-color: #634121;
 }
 
 </style>

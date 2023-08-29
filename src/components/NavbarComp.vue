@@ -1,5 +1,15 @@
 <template lang="">
+    
 <nav>
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="smol" href="#">Account</a>
+  </li>
+  <br>
+  <li class="nav-item">
+    <a class="smol" href="#">Wishlist</a>
+  </li>
+</ul>
           <a class="navbar-brand" href="/">
      
     </a>  
@@ -43,6 +53,7 @@ export default {
 
 a.nav-link {
     text-decoration: none;
+    /* padding-left: 30%; */
 }
 
 .nav-link {
@@ -50,6 +61,21 @@ a.nav-link {
     font-size: 25px;
     font-weight: bold;
     -webkit-text-stroke: 0.2px #E4C2A2;
+    padding-right: 50px;
+}
+
+.smol {
+    font-size: 20px;
+    padding-left: 30px;
+    color: #995C23;
+    -webkit-text-stroke: 0.2px #E4C2A2;
+    text-decoration: none;
+}
+
+ul {
+    height: 25px !important;
+    padding-right: 15%;
+    font-weight: bold;
 }
     
 </style>

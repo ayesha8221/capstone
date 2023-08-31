@@ -15,7 +15,7 @@
   <div class="conta">
   <img src="https://i.postimg.cc/mrJB3nqC/istockphoto-1168964829-612x612.jpg" alt="Snow" class="beans">
   <button class="bttn">Learn More</button>
-  <p class="About">Welcome to Roast & Revelry, where passion for quality meets a commitment to community and sustainability. At [Your Ecommerce Name], we take immense pride in crafting an exceptional coffee experience that not only tantalizes your taste buds but also resonates with your values.</p>
+  <p class="About">Welcome to Roast & Revelry, where passion for quality meets a commitment to community and sustainability. At Roast & Revelry, we take immense pride in crafting an exceptional coffee experience that not only tantalizes your taste buds but also resonates with your values.</p>
 </div>
 </div>
 <div class="featured">

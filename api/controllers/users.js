@@ -1,5 +1,5 @@
 const { router } = require("json-server");
-const { getUsers, getUserByID, insertUser, deleteUserByID, updateUserByID} =require("../models/userModels.js")
+const { getUsers, getUserByID, insertUser, deleteUserByID, updateUserByID, getCart} =require("../models/userModels.js")
 // const {bcrypt} = require('bcrypt');
 const bcrypt = require('bcrypt')
 const {createToken} = require('../middleware/AuthenticateUser.js')
@@ -15,6 +15,8 @@ const showUsers = (req, res) => {
         }
     });
 }
+
+
 
 // Get Single User 
 const showUserById = (req, res) => {
@@ -138,4 +140,5 @@ const updateUser = (req, res) => {
     createUser,
     deleteUser,
     updateUser,
+    userLogin
   };

@@ -54,5 +54,21 @@ router.put("/users/:id", updateUser);
 //login
 router.post("/user/login", userLogin);
 
+
+
 // export default router
 module.exports = router;
+
+
+// Cart routes
+
+const {
+  showCart,
+  createCart,
+} = require("../controllers/cart");
+
+//get all cart items from user ID
+router.get("/user/:id/carts", showCart);
+
+//Add item to cart
+router.post("/user/:id/cart", createCart);

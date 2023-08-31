@@ -27,6 +27,7 @@ const getUserByID = (id, result) => {
     });   
 }
 
+
 // Insert Product to Database
 const insertUser = (data, result) => {
     db.query("INSERT INTO Users SET ?;", [data], (err, results) => {             

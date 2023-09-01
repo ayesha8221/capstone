@@ -1,12 +1,11 @@
 const db = require("../config/db.js");
 const { createToken } = require("../middleware/AuthenticateUser.js")
 const { compare } = require("bcrypt")
-// const bcrypt = require ('bcrypt');
 
 
 // Get everything from users cart
 const getCart = (id, result,) => {
-  db.query("SELECT Cart.cartID, Products.prodName AS prodName, Products.amount FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?",
+  db.query("SELECT Cart.cartID, Products.prodName AS prodName, Products.amount, Products.quantity FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?",
    [id], (err, results) => {             
       if(err) {
           console.log(err);
@@ -35,23 +34,11 @@ const insertCart = (userID, prodID, callback) => {
 };
 
 
-// const deleteUserByID = (id, result) => {
-//   db.query('DELETE FROM Users WHERE userID = ?', [id], (err, results) => {
-//       if (err) {
-//           console.log(err);
-//           result(err, null);
-//       } else {
-//           result(null, results);
-//       }
-      
-//   });
-// };
-
 // delete specific item 
-const deleteCartItemFromDatabase = (userID, cartID, callback) => {
+const deleteCartItem = ( cartID, callback) => {
   db.query(
-    'DELETE FROM Cart WHERE userID = ? AND cartID = ?',
-    [userID, cartID],
+    'DELETE FROM Cart WHERE cartID = ?',
+    [cartID],
     (err, result) => {
       if (err) {
         callback(err, null);
@@ -62,8 +49,42 @@ const deleteCartItemFromDatabase = (userID, cartID, callback) => {
   );
 };
 
+
+const deleteAllItems = ( userID, callback) => {
+  db.query(
+    'DELETE FROM Cart WHERE userID = ?',
+    [userID],
+    (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    }
+  );
+};
+
+//update cart
+
+const updateCartById = (data, id, result) => {
+  db.query(
+    `UPDATE Cart SET ? WHERE cartID = ? `,
+    [data, id],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+      } else {
+        result(null, results);
+      }
+    }
+  );
+};
+
 module.exports = {
     getCart,
     insertCart,
-    deleteCartItemFromDatabase,
+    deleteCartItem,
+    deleteAllItems,
+    updateCartById,
   };

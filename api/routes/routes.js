@@ -56,16 +56,14 @@ router.post("/user/login", userLogin);
 
 
 
-// export default router
-module.exports = router;
-
-
 // Cart routes
 
 const {
   showCart,
   createCart,
-  deleteCartItem,
+  deleteItem,
+  deleteCart,
+  updateCart
 } = require("../controllers/cart");
 
 //get all cart items from user ID
@@ -74,4 +72,16 @@ router.get("/user/:id/carts", showCart);
 //Add item to cart
 router.post("/user/:id/cart", createCart);
 
-router.delete("/user/:id/cart/:id", deleteCartItem);
+//delete specific item
+router.delete("/user/:id/cart/:id", deleteItem);
+
+//delete all items
+router.delete("/user/:id/cart", deleteCart);
+
+
+router.put("/user/:id/cart/:id", updateCart);
+
+
+
+// export default router
+module.exports = router;

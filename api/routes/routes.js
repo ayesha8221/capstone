@@ -65,6 +65,7 @@ module.exports = router;
 const {
   showCart,
   createCart,
+  deleteCartItem,
 } = require("../controllers/cart");
 
 //get all cart items from user ID
@@ -72,3 +73,5 @@ router.get("/user/:id/carts", showCart);
 
 //Add item to cart
 router.post("/user/:id/cart", createCart);
+
+router.delete("/user/:id/cart/:id", deleteCartItem);

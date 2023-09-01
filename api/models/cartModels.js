@@ -6,7 +6,8 @@ const { compare } = require("bcrypt")
 
 // Get everything from users cart
 const getCart = (id, result,) => {
-  db.query("SELECT Cart.cartID, Products.prodName AS prodName, Products.amount FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?", [id], (err, results) => {             
+  db.query("SELECT Cart.cartID, Products.prodName AS prodName, Products.amount FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?",
+   [id], (err, results) => {             
       if(err) {
           console.log(err);
           result(err, null);
@@ -18,72 +19,51 @@ const getCart = (id, result,) => {
 
 //add something to cart
 
-const insertCart = (userID, callback) => {
-    db.query(
-      'INSERT INTO Cart (userID, prodID, amount) SELECT ? AS userID, Products.prodID, Products.amount FROM Products WHERE Cart.userID = ?;',
-      [userID, userID],
-      (err, results) => {
-        if (err) {
-          console.log('Database error');
-          callback(err, null);
-        } else {
-          callback(null, results);
-        }
+const insertCart = (userID, prodID, callback) => {
+  db.query(
+    'INSERT INTO Cart (userID, prodID) VALUES (?, ?)',
+    [userID, prodID],
+    (err, results) => {
+      if (err) {
+        console.log('Database error');
+        callback(err, null);
+      } else {
+        callback(null, results);
       }
-    );
-  };
+    }
+  );
+};
 
-// const insertCart = (id, result) => {
-//   db.query(
-//     "INSERT INTO Cart.cartID SET Products.prodName AS prodName, Products.amount FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?",
-//     [id],
-//     (err, results) => {
+
+// const deleteUserByID = (id, result) => {
+//   db.query('DELETE FROM Users WHERE userID = ?', [id], (err, results) => {
 //       if (err) {
-//         console.log('Database error');
-//         result(err, null);
+//           console.log(err);
+//           result(err, null);
 //       } else {
-//         result(null, results);
+//           result(null, results);
 //       }
-//     }
-//   );
+      
+//   });
 // };
 
-// const insertCart = (userID, productID, amount, callback) => {
-//     // Fetch the "amount" from the "Products" table based on the "productID"
-//     db.query(
-//       "SELECT amount FROM Products WHERE prodID = ?",
-//       [productID],
-//       (err, productResult) => {
-//         if (err) {
-//           console.log('Database error:', err);
-//           callback(err, null);
-//         } else {
-//           if (productResult.length === 0) {
-//             // Handle the case where the product with the given ID doesn't exist
-//             callback("Product not found", null);
-//           } else {
-//             const cartAmount = productResult[0].amount;
-  
-//             // Insert the item into the cart with the retrieved "amount"
-//             db.query(
-//               "INSERT INTO Cart (userID, prodID, amount) VALUES (?, ?, ?)",
-//               [userID, productID, amount],
-//               (err, insertResult) => {
-//                 if (err) {
-//                   console.log('Database error:', err);
-//                   callback(err, null);
-//                 } else {
-//                   callback(null, insertResult);
-//                 }
-//               }
-//             );
-//           }
-//         }
-//       }
-//     );
-//   };
+// delete specific item 
+const deleteCartItemFromDatabase = (userID, cartID, callback) => {
+  db.query(
+    'DELETE FROM Cart WHERE userID = ? AND cartID = ?',
+    [userID, cartID],
+    (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    }
+  );
+};
 
 module.exports = {
     getCart,
     insertCart,
+    deleteCartItemFromDatabase,
   };

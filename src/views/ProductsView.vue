@@ -6,7 +6,7 @@
     placeholder="Search for a product..."
   />
   <div class="container">
-    <!-- <div class="filter-btns"> -->
+    <div class="filter-btns">
       <select id="sort-select" v-model="selectedSort">
         <option value="options">Sort options</option>
         <option value="alphabetical">Sort Alphabetically</option>
@@ -50,6 +50,7 @@
       :product="product"
     />
   </div>
+  </div>
   <!-- <SpinnerComp v-else /> -->
 </template>
 <script>
@@ -67,24 +68,25 @@ export default {
   },
   computed: {
     sortedProducts() {
-      let sorted = this.products;
+    let sorted = this.products;
 
-      if (this.selectedFilter !== "all") {
-        sorted = sorted.filter(
-          (product) => product.category === this.selectedFilter
-        );
-      }
+    if (this.selectedFilter && this.selectedFilter !== "all") {
+      sorted = sorted.filter(
+        (product) => product.category === this.selectedFilter
+      );
+    }
 
-      if (this.selectedSort === "alphabetical") {
-        sorted.sort((a, b) => a.prodName.localeCompare(b.prodName));
-      } else if (this.selectedSort === "price-high") {
-        sorted.sort((a, b) => b.amount - a.amount);
-      } else if (this.selectedSort === "price-low") {
-        sorted.sort((a, b) => a.amount - b.amount);
-      }
+    if (this.selectedSort === "alphabetical") {
+      sorted.sort((a, b) => a.prodName.localeCompare(b.prodName));
+    } else if (this.selectedSort === "price-high") {
+      sorted.sort((a, b) => b.amount - a.amount);
+    } else if (this.selectedSort === "price-low") {
+      sorted.sort((a, b) => a.amount - b.amount);
+    }
 
-      return sorted;
-    },
+    return sorted;
+  },
+
     // Create a computed property to filter products based on the search term
     filteredProducts() {
       return this.sortedProducts.filter((product) =>

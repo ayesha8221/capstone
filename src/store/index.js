@@ -5,8 +5,8 @@ export default createStore({
   state: {
     products: null,
     product: null,
-    users: null,
-    user: null,
+    // users: null,
+    // user: null,
   },
   getters: {
   },
@@ -17,12 +17,12 @@ export default createStore({
     setProduct: (state, product) => {
       state.product = product;
     },
-    setUsers: (state, users) => {
-      state.users = users;
-    },
-    setUser: (state, user) => {
-      state.user = user;
-  },
+  //   setUsers: (state, users) => {
+  //     state.users = users;
+  //   },
+  //   setUser: (state, user) => {
+  //     state.user = user;
+  // },
 },
   actions: {
     getProducts: async (context) => {
@@ -35,24 +35,24 @@ export default createStore({
         .then((res) => res.json())
         .then((product) => context.commit("setProduct", product));
     },
-    getUsers: async (context) => {
-      fetch("https://capstone-sb96.onrender.com/users")
-        .then((res) => res.json())
-        .then((users) => context.commit("setUsers", users));
-    },
-    getUser: async (context, id) => {
-      try {
-        const res = await fetch(`https://capstone-sb96.onrender.com/users/${id}`);
-        if (!res.ok) {
-          throw new Error("Failed to fetch user by ID");
-        }
-        const user = await res.json();
+    // getUsers: async (context) => {
+    //   fetch("https://capstone-sb96.onrender.com/users")
+    //     .then((res) => res.json())
+    //     .then((users) => context.commit("setUsers", users));
+    // },
+    // getUser: async (context, id) => {
+    //   try {
+    //     const res = await fetch(`https://capstone-sb96.onrender.com/users/${id}`);
+    //     if (!res.ok) {
+    //       throw new Error("Failed to fetch user by ID");
+    //     }
+    //     const user = await res.json();
 
-        context.commit("setUser", user);
-      } catch (error) {
-        console.error(error);
-      }
-    },
+    //     context.commit("setUser", user);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
   },
   modules: {
   }

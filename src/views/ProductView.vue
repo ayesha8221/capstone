@@ -1,6 +1,7 @@
 <template>
     <div v-if="product" class="product_details" :key="product.prodID" :product="product">
         <div class="card mx-auto" id="that">
+            <!-- <div class="card "> -->
                 <div class="container text-center">
   <div class="row">
     <div class="col-sm-6 col-md-5 col-lg-6"><img class="image" :src="product.prodUrl" :alt="product.prodName"/></div>
@@ -15,11 +16,12 @@
                 </div>
             </div></div>
   </div>
-
+<!-- </div> -->
             
           
         </div>
     </div>
+    <loading-spinner v-else/>
 </template>
 <script>
 export default {

@@ -37,6 +37,14 @@
       >
         EQUIPMENT
       </button>
+      <button
+        type="button"
+        class="filter-btn"
+        :class="{ 'active-btn': selectedFilter === 'Accessories' }"
+        @click="selectFilter('Accessories')"
+      >
+        ACCESSORIES
+      </button>
     </div>
   </div>
   <div
@@ -49,12 +57,15 @@
       :key="product.prodID"
       :product="product"
     />
+     
   </div>
+  <loading-spinner v-else/>
   </div>
-  <!-- <SpinnerComp v-else /> -->
+ 
 </template>
 <script>
 
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import CardComp from '@/components/CardComp.vue'
 
 export default {
@@ -105,9 +116,15 @@ export default {
     });
   },
 
-  components: { CardComp },
+  components: { CardComp, LoadingSpinner },
 }
 </script>
-<style lang="">
+<style scoped>
+* {
+  min-height: 100vh;
+
+}
+
+
     
 </style>

@@ -12,7 +12,7 @@
   <style scoped>
   .loader {
     border: 7px solid #fff9e4; /* Light grey */
-    border-top: 7px solid #0a0b0c; /* Blue */
+    border-top: 7px solid #3C6866; /* Blue */
     border-radius: 50%;
     width: 35px;
     height: 35px;

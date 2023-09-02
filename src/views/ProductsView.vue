@@ -1,10 +1,13 @@
 <template lang="">
     <div>
+      <div class="search">
         <input
-    class="m-2"
+    class="m-3"
     v-model="searchTerm"
     placeholder="Search for a product..."
   />
+      </div>
+        
   <div class="container">
     <div class="filter-btns">
       <select id="sort-select" v-model="selectedSort">
@@ -121,8 +124,47 @@ export default {
 </script>
 <style scoped>
 * {
-  min-height: 100vh;
+  background-color:  #dab99a;
+}
 
+.search {
+  text-align: center;
+}
+
+#sort-select{
+  
+}
+
+input.m-3 {
+  width: 600px;
+  height: 40px;
+  background-color: rgb(249, 235, 223);
+  border-radius: 10px;
+  border-color:  #804711 !important;
+  cursor: pointer;
+  color: #462507;
+  padding-left: 20px;
+  /* border: none; */
+}
+
+button {
+  margin-left: 9%;
+  border: none;
+  font-size: 30px;
+  color: #a46427;
+text-align: center;
+/* font-family: Inter; */
+/* font-size: 45px; */
+font-style: italic;
+font-weight: 700;
+line-height: normal;
+-webkit-text-stroke: 1px #462507;
+cursor: pointer;
+padding-bottom: 2%;
+}
+
+.active-btn {
+  text-decoration: underline #77481c 13%;
 }
 
 

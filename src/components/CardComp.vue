@@ -2,12 +2,12 @@
     <div>
         <div class="container">
     <div class="card my-4" id="body">
-      <router-link :to="{ name: 'product', params: { id: product.prodID } }">
+      
         <img :src="product.prodUrl" :alt="product.prodName" class="picture" />
         <h5>{{ product.prodName }}</h5>
         <p> R {{ product.amount }}</p>
-        <button v-on:click="addToCart" class="addbtn">View Details</button>
-      </router-link>
+        <button><router-link class="button" :to="{ name: 'product', params: { id: product.prodID } }"> View Details
+      </router-link></button>
     </div>
   </div>
     </div>
@@ -47,9 +47,9 @@ img {
   text-align: center;
 }
 
-button {
+.button {
   background: #462507;
-  width:120px;
+  width:100px;
   height: 40px;
   font-weight: 600;
   font-size: 18px;
@@ -58,7 +58,7 @@ text-align: center;
 border: none;
 }
 
-button:hover {
+.button:hover {
   background:#613914;
 }
 

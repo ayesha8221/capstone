@@ -27,24 +27,27 @@ export default createStore({
     setUser: (state, user) => {
       state.user = user;
   },
+  setcartItems: (state, cartItems) => {
+    state.cart = cartItems;
+  },
  // Mutations to modify the cart state
  addToCart(state, product) {
   state.cartItems.push({ product, quantity: 1 });
 },
-incrementItemQuantity(state, cartItem) {
-  cartItem.quantity++;
-},
-decrementItemQuantity(state, cartItem) {
-  if (cartItem.quantity > 1) {
-    cartItem.quantity--;
-  } else {
-    // Remove the item from the cart if the quantity becomes zero
-    const index = state.cartItems.indexOf(cartItem);
-    if (index !== -1) {
-      state.cartItems.splice(index, 1);
-    }
-  }
-},
+// incrementItemQuantity(state, cartItem) {
+//   cartItem.quantity++;
+// },
+// decrementItemQuantity(state, cartItem) {
+//   if (cartItem.quantity > 1) {
+//     cartItem.quantity--;
+//   } else {
+//     // Remove the item from the cart if the quantity becomes zero
+//     const index = state.cartItems.indexOf(cartItem);
+//     if (index !== -1) {
+//       state.cartItems.splice(index, 1);
+//     }
+//   }
+// },
 clearCart(state) {
   state.cartItems = [];
 },
@@ -87,24 +90,24 @@ clearCart(state) {
         commit('addToCart', product);
       }
     },
-    incrementCartQuantity({ commit, state }, product) {
-      const cartItem = state.cartItems.find((item) => item.product.id === product.id);
-      if (cartItem) {
-        commit('incrementItemQuantity', cartItem);
-      }
-    },
-    decrementCartQuantity({ commit, state }, product) {
-      const cartItem = state.cartItems.find((item) => item.product.id === product.id);
-      if (cartItem) {
-        commit('decrementItemQuantity', cartItem);
-      }
-    },
-    removeFromCart({ commit, state }, product) {
-      const cartItem = state.cartItems.find((item) => item.product.id === product.id);
-      if (cartItem) {
-        commit('decrementItemQuantity', cartItem);
-      }
-    },
+    // incrementCartQuantity({ commit, state }, product) {
+    //   const cartItem = state.cartItems.find((item) => item.product.id === product.id);
+    //   if (cartItem) {
+    //     commit('incrementItemQuantity', cartItem);
+    //   }
+    // },
+    // decrementCartQuantity({ commit, state }, product) {
+    //   const cartItem = state.cartItems.find((item) => item.product.id === product.id);
+    //   if (cartItem) {
+    //     commit('decrementItemQuantity', cartItem);
+    //   }
+    // },
+    // removeFromCart({ commit, state }, product) {
+    //   const cartItem = state.cartItems.find((item) => item.product.id === product.id);
+    //   if (cartItem) {
+    //     commit('decrementItemQuantity', cartItem);
+    //   }
+    // },
     clearCart({ commit }) {
       commit('clearCart');
     },

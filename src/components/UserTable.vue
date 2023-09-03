@@ -24,6 +24,7 @@
                   <th>Role</th>
                   
                   <th>Edit/Delete</th>
+                  <th>View Profile</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,6 +49,9 @@
                         >
                           Delete
                         </button>
+                  </td>
+                  <td>
+                    <button> <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link></button>
                   </td>
                 </tr>
               </tbody>

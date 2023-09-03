@@ -9,6 +9,10 @@
   <li class="nav-item">
     <a class="smol" href="#">Wishlist</a>
   </li>
+  <br>
+  <li class="nav-item">
+    <router-link class="smol" to="/cart">Cart</router-link>
+  </li>
 </ul>
           <a class="navbar-brand" href="/">
      
@@ -74,7 +78,7 @@ a.nav-link {
 
 ul {
     height: 25px !important;
-    padding-right: 15%;
+    padding-right: 10%;
     font-weight: bold;
 }
     

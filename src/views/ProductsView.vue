@@ -131,9 +131,6 @@ export default {
   text-align: center;
 }
 
-#sort-select{
-  
-}
 
 input.m-3 {
   width: 600px;

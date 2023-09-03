@@ -12,7 +12,9 @@
                     <p> {{ product.description }} </p>
                     <p>R  {{ product.amount }}</p>
                     <p>Quantity : {{ product.quantity }} In Stock </p>
-                    <button> Add to Cart </button>
+                    <button class="btn" @click="addToCart(product)">
+                    Add To Cart
+                  </button>
                 </div>
             </div></div>
   </div>
@@ -24,6 +26,10 @@
     <loading-spinner v-else/>
 </template>
 <script>
+
+import LoadingSpinner from '@/components/LoadingSpinner.vue'
+
+
 export default {
     // props: ["id"],
     computed: {
@@ -39,7 +45,13 @@ export default {
     mounted() {
         this.$store.dispatch("getProduct", this.id)
     },
-    
+    methods: {
+        addToCart (product) {
+            this.$store.dispatch('addToCart', product)
+        }
+        
+  },
+    components: { LoadingSpinner },
 }
 </script>
 <style scoped>

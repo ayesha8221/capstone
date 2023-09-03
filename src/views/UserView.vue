@@ -38,7 +38,9 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
    }
    </script>
    <style scoped>
-
+*{
+    overflow:hidden;
+}
    .profile {
     height: 300px;
     width:fit-content;

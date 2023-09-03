@@ -2,8 +2,12 @@
     
 <nav>
     <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="smol" href="#">Account</a>
+      <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Account</a>
+    <ul class="dropdown-menu">
+      <li><router-link class="smol" to="/login">Login</router-link></li>
+      <li><router-link class="smol" to="/register">Register</router-link></li>
+    </ul>
   </li>
   <br>
   <li class="nav-item">
@@ -70,6 +74,14 @@ a.nav-link {
 
 .smol {
     font-size: 20px;
+    padding-left: 30px;
+    color: #995C23;
+    -webkit-text-stroke: 0.2px #E4C2A2;
+    text-decoration: none;
+}
+
+.nav-item.dropdown-toggle{
+  font-size: 20px;
     padding-left: 30px;
     color: #995C23;
     -webkit-text-stroke: 0.2px #E4C2A2;

@@ -134,5 +134,16 @@ line-height: normal;
 a {
   color: #E4C2A2;
 }
+
+input, textarea {
+  /* width: 600px; */
+  /* height: 40px; */
+  background-color: rgb(255, 213, 176);
+  border-radius: 10px;
+  border-color:  #c08248 !important;
+  cursor: pointer;
+  color: #603207;
+  padding-left: 20px;
+}
     
 </style>

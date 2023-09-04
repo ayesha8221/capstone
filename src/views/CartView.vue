@@ -1,5 +1,8 @@
 <template>
     <div>
+
+<h1>Your Cart</h1>
+
       <ul>
         <li v-for="cartItem in cartItems" :key="cartItem.product.prodID">
           {{ cartItem.product.prodName }} - Quantity: {{ cartItem.quantity }}

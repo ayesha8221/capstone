@@ -42,6 +42,17 @@ deleteProduct(state, productId) {
   // Remove the product with the given ID from the products list.
   state.products = state.products.filter((product) => product.id !== productId);
 },
+updateProduct(state, updatedProduct) {
+  // Find the product in the products list and update it with the new data.
+  const index = state.products.findIndex((product) => product.id === updatedProduct.id);
+  if (index !== -1) {
+    Vue.set(state.products, index, updatedProduct);
+  }
+},
+deleteUser(state, userId) {
+  // Remove the user with the given ID from the users list.
+  state.users = state.users.filter((user) => user.id !== userId);
+},
 // incrementItemQuantity(state, cartItem) {
 //   cartItem.quantity++;
 // },
@@ -70,6 +81,7 @@ clearCart(state) {
       fetch("https://capstone-sb96.onrender.com/products/" + id)
         .then((res) => res.json())
         .then((product) => context.commit("setProduct", product));
+        
     },
     getUsers: async (context) => {
       fetch("https://capstone-sb96.onrender.com/users")
@@ -89,7 +101,7 @@ clearCart(state) {
         console.error(error);
       }
     },
-    
+
     async addProduct({ commit }, productData) {
       try {
         // Make the POST request to add the product.
@@ -118,6 +130,30 @@ clearCart(state) {
         return false; // Indicate failure.
       }
     },
+    async getProduct({ commit }, productId) {
+      try {
+        const response = await axios.get(`https://capstone-sb96.onrender.com/products/${productId}`);
+        commit('setProduct', response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    async updateProduct({ commit }, updatedProduct) {
+      try {
+        // Make the PUT request to update the product.
+        const response = await axios.put(`https://capstone-sb96.onrender.com/products/${updatedProduct.id}`, updatedProduct);
+
+        // Commit the mutation to update the product in the state.
+        commit('updateProduct', response.data);
+
+        return true; // Indicate success.
+      } catch (err) {
+        console.error(err);
+        return false; // Indicate failure.
+      }
+    },
+
+
   
   
 

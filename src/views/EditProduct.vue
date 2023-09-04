@@ -55,52 +55,52 @@
       </template>
       
       <script>
-      import axios from "axios";
+    //   import axios from "axios";
       
       export default {
         data() {
-          return {
-            prodName: '',
-            quantity: '',
-            amount: '',
-            category: '',
-            prodUrl: '',
-          };
-        },
-        methods: {
-          async updateProduct() {
-            try {
-              await axios.put(
-                `https://capstone-sb96.onrender.com/products/${this.$route.params.id}`,
-                {
-                    prodName: this.product.prodName,
-                    quantity: this.product.quantity,
-                    amount: this.product.amount,
-                  category: this.product.category,
-                  prodUrl: this.product.prodUrl,
-                }
-              );
-              this.prodName = '';
-              this.quantity = '';
-              this.amount = '';
-              this.category = '';
-              this.prodUrl = '';
-              this.$router.push("/admin");
-            } catch (err) {
-              alert('Product Updated successfully! ');
-            }
-          },
-        },
-        props: ["id"],
-        computed: {
-          product() {
-            return this.$store.state.product;
-          },
-        },
-        mounted() {
-          this.$store.dispatch("getProduct", this.id),
-          this.$store.dispatch("getProducts");
-        },
+    return {
+      editedProduct: {}, // Separate data for the edited product.
+    };
+  },
+  methods: {
+    async updateProduct() {
+      const success = await this.$store.dispatch('updateProduct', this.editedProduct);
+
+      if (success) {
+        // Update was successful
+        alert('Product updated successfully!');
+        this.$router.push('/admin');
+      } else {
+        // Update failed
+        alert('Failed to update product. Please try again.');
+      }
+    },
+  },
+  computed: {
+    product() {
+      return this.$store.state.product;
+    },
+  },
+  watch: {
+    $route(to, from) {
+      if (to.params.id !== from.params.id) {
+        // Route parameter changed, fetch the new product
+        this.$store.dispatch('getProduct', to.params.id);
+      }
+    },
+    product: {
+      handler(newProduct) {
+        // Watch for changes in the product and update the editedProduct data.
+        this.editedProduct = { ...newProduct };
+      },
+      immediate: true, // Trigger on component load.
+    },
+  },
+  mounted() {
+    this.$store.dispatch('getProduct', this.$route.params.id);
+    this.$store.dispatch('getProducts');
+  },
       };
       </script>
       <style>

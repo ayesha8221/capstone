@@ -7,8 +7,6 @@
         <div class="row table">
           <div class="col-12">
             <h1>Users</h1>
-            <!-- <button><router-link to="/admin/add/user"> Add User </router-link> -->
-            <!-- </button> -->
           </div>
           <div class="col">
             <table
@@ -41,14 +39,6 @@
                     <button>
                       <!-- <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link> -->
                     </button>
-                    <button
-                          type="submit"
-                          class="btn btton"
-                          @click= deleteUser(user.userID)
-                          id="delete-row"
-                        >
-                          Delete
-                        </button>
                   </td>
                   <td>
                     <button> <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link></button>
@@ -80,16 +70,6 @@
           this.$store.dispatch("getUsers")
       },
   
-    //   methods: {
-    //   async deleteUser(id) {
-    //     try {
-    //       await axios.delete(`https://nodeeomp.onrender.com/users/${id}`);
-    //       this.$store.dispatch("getUsers")
-    //     } catch (err) {
-    //       alert(err);
-    //     }
-    //   },
-    // },
   
       components: { LoadingSpinner},
   }

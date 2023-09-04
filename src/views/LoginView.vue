@@ -73,8 +73,5 @@ export default {
     text-align:center
 }
 
-input {
-    
-}
     
 </style>

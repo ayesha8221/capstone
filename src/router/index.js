@@ -48,6 +48,23 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/UserView.vue')
   },
   {
+    path: '/admin/add/product/',
+    name: 'admin add product',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/AddProduct.vue')
+  },
+  {
+    path: '/admin/edit/product/:id',
+    name: 'admin edit product',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/EditProduct.vue'),
+    props:true,
+  },
+  {
     path: '/cart',
     name: 'cart',
     // route level code-splitting

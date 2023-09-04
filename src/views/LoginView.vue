@@ -39,7 +39,12 @@
 </template>
 <script>
 export default {
-    
+  data() {
+            return {
+                    emailAdd: '',
+                    userPass: ''
+            }
+        }, 
 }
 </script>
 <style scoped>
@@ -68,8 +73,5 @@ export default {
     text-align:center
 }
 
-input {
-    
-}
     
 </style>

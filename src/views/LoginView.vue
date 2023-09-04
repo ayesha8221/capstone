@@ -39,7 +39,12 @@
 </template>
 <script>
 export default {
-    
+  data() {
+            return {
+                    emailAdd: '',
+                    userPass: ''
+            }
+        }, 
 }
 </script>
 <style scoped>

@@ -3,9 +3,6 @@
       <ul>
         <li v-for="cartItem in cartItems" :key="cartItem.product.prodID">
           {{ cartItem.product.prodName }} - Quantity: {{ cartItem.quantity }}
-          <!-- <button @click="incrementCartItem(cartItem.product)">+</button>
-          <button @click="decrementCartItem(cartItem.product)">-</button>
-          <button @click="removeFromCart(cartItem.product)">Remove</button> -->
         </li>
       </ul>
       
@@ -24,16 +21,7 @@
       addToCart(product) {
         this.$store.commit('addToCart', product); // Commit the 'addToCart' mutation
       },
-    //   incrementCartItem(product) {
-    //     this.$store.commit('incrementCartItem', product); // Commit the 'incrementCartItem' mutation
-    //   },
-    //   decrementCartItem(product) {
-    //     this.$store.commit('decrementCartItem', product); // Commit the 'decrementCartItem' mutation
-    //   },
-    //   removeFromCart(product) {
-    //     this.$store.commit('removeFromCart', product); // Commit the 'removeFromCart' mutation
-    //   },
-      clearCart() {
+       clearCart() {
         this.$store.commit('clearCart'); // Commit the 'clearCart' mutation
       },
     },

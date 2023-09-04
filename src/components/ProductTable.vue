@@ -4,7 +4,7 @@
                 <div class="col-12">
                   <h1>Products</h1>
                   <button>
-                    <!-- <router-link to="/"> Add Product </router-link> -->
+                    <router-link to="/admin/add/product"> Add Product </router-link>
                   </button>
                 </div>
                 <div class="col">
@@ -32,9 +32,9 @@
                         
                         <td>
                           
-                          <!-- <button>
-                          <router-link > Edit </router-link>
-                          </button>
+                          <button>
+                      <router-link :to="{ name: 'admin edit product', params: { id : product.prodID } }"> Edit </router-link>
+                      </button>
                           <button
                             type="submit"
                             class="btn btton"
@@ -42,7 +42,7 @@
                             id="delete-row"
                           >
                             Delete
-                          </button> -->
+                          </button>
                         </td>
                       </tr>
                     </tbody>
@@ -68,17 +68,18 @@
     mounted() {
     this.$store.dispatch("getProducts")
     },
-    
-    // methods: {
-    //     async deleteProduct(id) {
-    //       try {
-    //         await axios.delete(`https://nodeeomp.onrender.com/products/${id}`);
-    //         this.$store.dispatch("getProducts")
-    //       } catch (err) {
-    //         alert(err);
-    //       }
-    //     },
-    //   },
+    methods: {
+    async deleteProduct(productId) {
+      const success = await this.$store.dispatch('deleteProduct', productId);
+
+      if (success) {
+        // Update the product list in your component if needed.
+        this.$store.dispatch('getProducts'); // You can dispatch this if you need to refresh the product list.
+      } else {
+        alert('Failed to delete product. Please try again.');
+      }
+    },
+  },
     
     
     };

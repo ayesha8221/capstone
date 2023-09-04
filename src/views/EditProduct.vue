@@ -42,12 +42,7 @@
                       placeholder="http://"
                       required
                     />
-                    <button
-                      class="btn btn-success mt-3"
-                      @click="updateProduct"
-                    >
-                      Update
-                    </button>
+                    <button @click="submitUpdate">Update Product</button>
             </div>
             
           </div>
@@ -55,53 +50,40 @@
       </template>
       
       <script>
-    //   import axios from "axios";
       
       export default {
+
         data() {
     return {
-      editedProduct: {}, // Separate data for the edited product.
+      updatedProduct: {
+        prodName: '', // Initialize with the current product data
+        quantity: '',
+        amount: '',
+        category: '',
+        prodUrl: '',
+      },
     };
   },
   methods: {
-    async updateProduct() {
-      const success = await this.$store.dispatch('updateProduct', this.editedProduct);
+    async submitUpdate() {
+      // Pass this.updatedProduct to your updateProduct action
+      const success = await this.$store.dispatch('updateProduct', this.updatedProduct);
 
       if (success) {
-        // Update was successful
-        alert('Product updated successfully!');
-        this.$router.push('/admin');
+        // Product updated successfully, handle any additional logic here
       } else {
-        // Update failed
-        alert('Failed to update product. Please try again.');
+        // Product update failed, handle errors or show an error message
       }
     },
   },
-  computed: {
-    product() {
-      return this.$store.state.product;
-    },
+    mounted() {
+    this.$store.dispatch('getProduct', this.$route.params.id).then(() => {
+      this.updatedProduct = { ...this.$store.state.product }; // Copy the current product data
+  })
   },
-  watch: {
-    $route(to, from) {
-      if (to.params.id !== from.params.id) {
-        // Route parameter changed, fetch the new product
-        this.$store.dispatch('getProduct', to.params.id);
-      }
-    },
-    product: {
-      handler(newProduct) {
-        // Watch for changes in the product and update the editedProduct data.
-        this.editedProduct = { ...newProduct };
-      },
-      immediate: true, // Trigger on component load.
-    },
-  },
-  mounted() {
-    this.$store.dispatch('getProduct', this.$route.params.id);
-    this.$store.dispatch('getProducts');
-  },
-      };
+}
+
+      
       </script>
       <style>
     </style>

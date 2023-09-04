@@ -42,33 +42,16 @@ deleteProduct(state, productId) {
   // Remove the product with the given ID from the products list.
   state.products = state.products.filter((product) => product.id !== productId);
 },
-updateProduct(state, updatedProduct) {
-  // Find the product in the products list and update it with the new data.
-  const index = state.products.findIndex((product) => product.id === updatedProduct.id);
-  if (index !== -1) {
-    Vue.set(state.products, index, updatedProduct);
-  }
-},
-deleteUser(state, userId) {
-  // Remove the user with the given ID from the users list.
-  state.users = state.users.filter((user) => user.id !== userId);
-},
-// incrementItemQuantity(state, cartItem) {
-//   cartItem.quantity++;
-// },
-// decrementItemQuantity(state, cartItem) {
-//   if (cartItem.quantity > 1) {
-//     cartItem.quantity--;
-//   } else {
-//     // Remove the item from the cart if the quantity becomes zero
-//     const index = state.cartItems.indexOf(cartItem);
-//     if (index !== -1) {
-//       state.cartItems.splice(index, 1);
-//     }
-//   }
-// },
+
 clearCart(state) {
   state.cartItems = [];
+},
+updateProduct(state, updatedProduct) {
+  // Find the product in the state by its ID and update it
+  const index = state.products.findIndex((product) => product.id === updatedProduct.id);
+  if (index !== -1) {
+    state.products[index] = updatedProduct;
+  }
 },
 },
   actions: {
@@ -130,32 +113,6 @@ clearCart(state) {
         return false; // Indicate failure.
       }
     },
-    async getProduct({ commit }, productId) {
-      try {
-        const response = await axios.get(`https://capstone-sb96.onrender.com/products/${productId}`);
-        commit('setProduct', response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    async updateProduct({ commit }, updatedProduct) {
-      try {
-        // Make the PUT request to update the product.
-        const response = await axios.put(`https://capstone-sb96.onrender.com/products/${updatedProduct.id}`, updatedProduct);
-
-        // Commit the mutation to update the product in the state.
-        commit('updateProduct', response.data);
-
-        return true; // Indicate success.
-      } catch (err) {
-        console.error(err);
-        return false; // Indicate failure.
-      }
-    },
-
-
-  
-  
 
     addToCart({ commit, state }, product) {
       const cartItem = state.cartItems.find((item) => item.product.id === product.id);
@@ -165,27 +122,25 @@ clearCart(state) {
         commit('addToCart', product);
       }
     },
-    // incrementCartQuantity({ commit, state }, product) {
-    //   const cartItem = state.cartItems.find((item) => item.product.id === product.id);
-    //   if (cartItem) {
-    //     commit('incrementItemQuantity', cartItem);
-    //   }
-    // },
-    // decrementCartQuantity({ commit, state }, product) {
-    //   const cartItem = state.cartItems.find((item) => item.product.id === product.id);
-    //   if (cartItem) {
-    //     commit('decrementItemQuantity', cartItem);
-    //   }
-    // },
-    // removeFromCart({ commit, state }, product) {
-    //   const cartItem = state.cartItems.find((item) => item.product.id === product.id);
-    //   if (cartItem) {
-    //     commit('decrementItemQuantity', cartItem);
-    //   }
-    // },
+
     clearCart({ commit }) {
       commit('clearCart');
     },
+
+    async updateProduct({ commit }, updatedProductData) {
+      try {
+        const response = await axios.put(`https://capstone-sb96.onrender.com/product/${updatedProductData.id}`, updatedProductData);
+  
+        // Commit the mutation to update the product in the state
+        commit('updateProduct', response.data);
+  
+        return true; // Indicate success
+      } catch (error) {
+        console.error(error);
+        return false; // Indicate failure
+      }
+    },
+
   },
   modules: {
   }

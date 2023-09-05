@@ -8,7 +8,8 @@ export default createStore({
     product: null,
     users: null,
     user: null,
-    cartItems: [], 
+    cartItems: [],
+    Token: null, 
   },
   getters: {
     // cartProducts (state, getters) {

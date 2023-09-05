@@ -113,11 +113,11 @@ export default {
       this.selectedFilter = filter;
     },
   },
-  mounted() {
+mounted() {
     this.$store.dispatch("getProducts").then(() => {
       this.products = this.$store.state.products;
     });
-  },
+  },  
 
   components: { CardComp, LoadingSpinner },
 }

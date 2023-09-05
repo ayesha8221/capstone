@@ -7,20 +7,25 @@
         
         <h1>Login </h1>
 
-        <form class="form-inline" action="/action_page.php">
+        <form class="form-inline" action="/action_page.php" @submit.prevent="userLogin" >
   <div class="form-group">
-    <!-- <label for="email">Email address:</label> -->
-    <input type="email" class="form-control" id="email" placeholder="Enter email address">
+    <label for="email">Email address:</label>
+    <input
+          type="email"
+          name="email"
+          v-model="emailAdd"
+          placeholder=""
+        />
   </div>
   <br>
   <div class="form-group">
-    <!-- <label for="pwd">Password:</label> -->
-    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    <label for="pwd">Password:</label>
+    <input type="password" v-model="userPass" name="password" />
   </div>
   <div class="checkbox">
     <label><input type="checkbox"> Remember me</label>
   </div>
-  <button type="submit" class="btn btn-default">Login</button>
+  <button type="submit" class="btn btn-default">Log in</button>
 </form>
 
 
@@ -38,13 +43,49 @@
     </div>
 </template>
 <script>
+
+import Swal from "sweetalert2";
+
 export default {
   data() {
-            return {
-                    emailAdd: '',
-                    userPass: ''
-            }
-        }, 
+    return {
+      emailAdd: "",
+      userPass: "",
+    };
+  },
+  beforeCreate() {
+    this.$store.dispatch("cookieCheck");
+  },
+  methods: {
+    async userLogin() {
+      console.log("Reached");
+      try {
+        const payload = {
+          emailAdd: this.emailAdd,
+          userPass: this.userPass,
+        };
+        const resp = await this.$store.dispatch("login", payload);
+        console.log(resp)
+        if (resp.success === true && resp.token && resp.result) {
+          await Swal.fire({
+            icon: "success",
+            title: "Logged in Successfully",
+            text: "You are now logged in!",
+          });
+          this.$router.push("/");
+        } else {
+          const errMsg = "Unexpected error";
+          await Swal.fire({
+            icon: "error",
+            title: "Login failed",
+            text: errMsg,
+          });
+        }
+      } catch (e) {
+        console.error("Error while logging in: ", e);
+      }
+    },
+  },
 }
 </script>
 <style scoped>

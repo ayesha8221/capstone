@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 
 export default createStore({
@@ -9,7 +10,13 @@ export default createStore({
     users: null,
     user: null,
     cartItems: [],
-    Token: null, 
+    token: null,
+    userData: null,
+    userRole: null,
+    msg: null,
+    error: null,
+    regStatus: null,
+    logStatus: null,
   },
   getters: {
     // cartProducts (state, getters) {
@@ -42,6 +49,39 @@ export default createStore({
 deleteProduct(state, productId) {
   // Remove the product with the given ID from the products list.
   state.products = state.products.filter((product) => product.id !== productId);
+},
+setRegStatus(state, status) {
+  state.regStatus = status;
+},
+setLogStatus(state, status) {
+  state.logStatus = status;
+},
+setToken(state, token) {
+  state.token = token;
+  Cookies.set("userToken", token, {
+    expires: 1,
+    path: "/",
+    secure: true,
+    sameSite: "None",
+  });
+},
+setUserData(state, userData) {
+  state.userData = userData;
+  if (userData && userData.userRole) {
+    state.userRole = userData.userRole;
+    localStorage.setItem("userData", JSON.stringify(userData));
+    console.log(userData, userData.userRole);
+  } else {
+    state.userData = null;
+    state.userRole = null;
+    localStorage.removeItem("userData");
+  }
+},
+setMsg(state, msg) {
+  state.msg = msg;
+},
+setError(state, error) {
+  state.error = error;
 },
 
 clearCart(state) {
@@ -113,6 +153,79 @@ updateProduct(state, updatedProduct) {
         console.error(err);
         return false; // Indicate failure.
       }
+    },
+
+    async register(context, payload) {
+      console.log("Reached");
+      try {
+        const res = await axios.post(`https://capstone-sb96.onrender.com/users`, payload);
+        console.log("Res: ", res.data);
+        const { msg, err, token } = res.data;
+        if (msg === "An error occured") {
+          context.commit("setError", msg);
+          context.commit("setRegStatus", "Not registered");
+          return { success: false, error: msg };
+        } else if (token) {
+          context.commit("setToken", token);
+          context.commit("setRegStatus", "Registered successfully");
+          return { success: true, token };
+        } else if (err) {
+          console.error(err);
+        }
+      } catch (e) {
+        context.commit("setError", e);
+        console.log(e);
+        context.commit("setRegStatus", "Not registered");
+        throw e;
+      }
+    },
+
+    async login(context, payload) {
+      try {
+        const res = await axios.post(`https://capstone-sb96.onrender.com/user/login`, payload);
+        console.log("Res: ", res.data.status);
+        const { err, message, token, result } = res.data;
+        console.log(result);
+        if (message === "Unregistered user or incorrect password!") {
+          context.commit("setError", message);
+          context.commit("setLogStatus", "Not logged in");
+          return { success: false, error: message };
+        }
+        if (message && token && result) {
+          context.commit("setUser", result);
+          context.commit("setToken", token);
+          context.commit("setUserData", result);
+          context.commit("setLogStatus", "Logged in!");
+          Cookies.set("userToken", token, {
+            expires: 1,
+          });
+          return { success: true, token, result };
+        } else if (err) {
+          context.commit("setError", err);
+          return { success: false, error: err };
+        } else {
+          context.commit("setError", "Unknown error during login");
+          context.commit("setLogStatus", "not logged in");
+          return { success: false, error: "Unknown error" };
+        }
+      } catch (err) {
+        console.log("Error")
+      }
+    },
+    cookieCheck(context) {
+      const token = Cookies.get("userToken");
+      if (token) {
+        context.commit("setToken", token);
+      }
+    },
+    init(context) {
+      context.dispatch("cookieCheck");
+    },
+    async logout(context) {
+      context.commit("setToken", null);
+      context.commit("setUser", null);
+      context.commit("setUserData", null);
+      Cookies.remove("userToken");
     },
 
     addToCart({ commit, state }, product) {

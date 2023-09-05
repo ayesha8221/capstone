@@ -27,7 +27,7 @@
     <a class="nav-link active" aria-current="page" href="/">Home</a>
   <li><router-link to="/about" class="nav-link">About</router-link></li>
   <li><router-link to="/products" class="nav-link">Products</router-link></li>
-  <li><router-link to="/contact" class="nav-link">Contact</router-link></li>
+  <!-- <li><router-link to="/contact" class="nav-link">Contact</router-link></li> -->
   <li><router-link to="/admin" class="nav-link">Admin</router-link></li>
 
 </div>

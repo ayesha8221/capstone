@@ -18,6 +18,12 @@ export default {
       this.products = this.$store.state.products;
     });
   },
+  created() {
+    const userData = localStorage.getItem("userData");
+    if (userData) {
+      this.$store.commit("setUserData", JSON.parse(userData));
+    }
+  },
 }
 </script>
 

@@ -111,7 +111,7 @@ export default {
   methods: {
     selectFilter(filter) {
       this.selectedFilter = filter;
-    },
+    }, 
   },
 mounted() {
     this.$store.dispatch("getProducts").then(() => {

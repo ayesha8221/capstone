@@ -113,10 +113,10 @@ const updateUser = (req, res) => {
             userPass,
           });
           // save token
-          res.cookie("LegitUser", token, {
-            maxAge: 3600000,
-            httpOnly: true,
-          });
+          // res.cookie("LegitUser", token, {
+          //   maxAge: 3600000,
+          //   httpOnly: true,
+          // });
           if (cResult) {
             res.json({
               message: "You can now enter another time",

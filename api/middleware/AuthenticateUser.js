@@ -1,4 +1,6 @@
-const {sign, veryify} = require('jsonwebtoken')
+
+const axios = require ('axios')
+const {sign} = require('jsonwebtoken')
 require('dotenv').config()
 
 function createToken(user) {
@@ -12,6 +14,15 @@ function createToken(user) {
     }
     )
 }
+
+function applyToken(token) {
+    if(token){
+      axios.withDefaults.headers = {
+        Authorization: `${token}`
+      }
+    }
+  }
+
 
 // function verifyAToken(req, res, next) {
 //     try {
@@ -29,5 +40,5 @@ function createToken(user) {
 // }
 
 module.exports = {
-    createToken
+    createToken, applyToken
 }

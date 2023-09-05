@@ -85,7 +85,7 @@ updateProduct(state, updatedProduct) {
       }
     },
 
-    async addProduct({ commit }, productData) {
+    async addProduct({ commit }, productData) { 
       try {
         // Make the POST request to add the product.
         const response = await axios.post('https://capstone-sb96.onrender.com/products/', productData);

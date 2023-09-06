@@ -2,35 +2,31 @@
 <template>
   <div>
     <!-- Display cart contents and total price -->
-    <div v-for="item in cartItems" :key="item.product.prodID">
-       Name: {{ item.product.prodName }} -  Price: {{ item.product.amount }} Quantity: {{ item.quantity }} - 
-      <button @click="removeFromCart(item.product.prodID)">Remove</button>
+    <div v-for="product in getCart" :key="product.id">
+       Name: {{ product.prodName }} -  Price: {{ product.amount }} - Quantity: {{ product.quantity }}  
+      <button @click="removeFromCart(product.prodID)">Remove</button>
     </div>
     Total Price: ${{ cartTotalPrice }}
     
-    <!-- Add products to the cart -->
-    <button @click="addToCart(product)">Add to Cart</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex';
-
 export default {
-  computed: {
-    ...mapState(['token']),
-    ...mapGetters(['cartItemCount', 'cartTotalPrice']),
-  },
-  methods: {
-    ...mapActions(['addToCart', 'removeFromCart', 'clearCart']),
-    addToCart(product) {
-      this.$store.dispatch('addToCart', product);
+    Name: 'setCart',
+    computed: {
+      getCart() {
+        console.log(this.$store.state.cart);
+        return this.$store.state.cart
+      },
+      user(){
+        return this.$store.state.userData
+      }
     },
-    removeFromCart(productId) {
-      this.$store.dispatch('removeFromCart', productId);
-    },
-  },
-};
+    mounted() {
+      this.$store.dispatch('getCart', this.user.userID)
+    }
+}
 </script>
 
 <!-- <template>

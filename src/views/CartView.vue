@@ -1,4 +1,39 @@
+
 <template>
+  <div>
+    <!-- Display cart contents and total price -->
+    <div v-for="item in cartItems" :key="item.product.prodID">
+       Name: {{ item.product.prodName }} -  Price: {{ item.product.amount }} Quantity: {{ item.quantity }} - 
+      <button @click="removeFromCart(item.product.prodID)">Remove</button>
+    </div>
+    Total Price: ${{ cartTotalPrice }}
+    
+    <!-- Add products to the cart -->
+    <button @click="addToCart(product)">Add to Cart</button>
+  </div>
+</template>
+
+<script>
+import { mapState, mapGetters, mapActions } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState(['token']),
+    ...mapGetters(['cartItemCount', 'cartTotalPrice']),
+  },
+  methods: {
+    ...mapActions(['addToCart', 'removeFromCart', 'clearCart']),
+    addToCart(product) {
+      this.$store.dispatch('addToCart', product);
+    },
+    removeFromCart(productId) {
+      this.$store.dispatch('removeFromCart', productId);
+    },
+  },
+};
+</script>
+
+<!-- <template>
     <div>
 
 <h1>Your Cart</h1>
@@ -18,7 +53,7 @@
   
   export default {
     computed: {
-      ...mapState(['cartItems']), // Map the 'cart' state
+      ...mapState(['cart']), // Map the 'cart' state
     },
     methods: {
       addToCart(product) {
@@ -29,7 +64,7 @@
       },
     },
   };
-  </script>
+  </script> -->
   
   
 

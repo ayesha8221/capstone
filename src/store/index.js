@@ -9,19 +9,19 @@ export default createStore({
     product: null,
     users: null,
     user: null,
-    cartItems: [],
     token: null,
     userData: null,
     userRole: null,
-    msg: null,
+    message: null,
     error: null,
     regStatus: null,
     logStatus: null,
+    cartItems: [], 
   },
   getters: {
-    // cartProducts (state, getters) {
-    //   return state.
-    // }
+    cartItemCount: (state) => state.cartItems.length,
+  cartTotalPrice: (state) =>
+    state.cartItems.reduce((total, item) => total + item.product.amount * item.quantity, 0),
   },
   mutations: {
     setProducts: (state, products) => {
@@ -43,13 +43,32 @@ export default createStore({
     state.products.push(product); // Add the new product to the list.
   },
  // Mutations to modify the cart state
- addToCart(state, product) {
-  state.cartItems.push({ product, quantity: 1 });
+//  addToCart(state, product) {
+//   state.cart.push({ product });
+// },
+// deleteProduct(state, productId) {
+//   // Remove the product with the given ID from the products list.
+//   state.products = state.products.filter((product) => product.id !== productId);
+// },
+addToCart(state, product) {
+  const cartItem = state.cartItems.find((item) => item.product.prodID === product.prodID);
+
+  if (cartItem) {
+    // If the product is already in the cart, increment the quantity
+    cartItem.quantity++;
+  } else {
+    // Otherwise, add a new item to the cart
+    state.cartItems.push({ product, quantity: 1 });
+  }
 },
-deleteProduct(state, productId) {
-  // Remove the product with the given ID from the products list.
-  state.products = state.products.filter((product) => product.id !== productId);
+removeFromCart(state, productId) {
+  state.cartItems = state.cartItems.filter((item) => item.product.id !== productId);
 },
+
+clearCart(state) {
+  state.cartItems = [];
+},
+
 setRegStatus(state, status) {
   state.regStatus = status;
 },
@@ -77,16 +96,13 @@ setUserData(state, userData) {
     localStorage.removeItem("userData");
   }
 },
-setMsg(state, msg) {
-  state.msg = msg;
+setmessage(state, message) {
+  state.message = message;
 },
 setError(state, error) {
   state.error = error;
 },
 
-clearCart(state) {
-  state.cartItems = [];
-},
 updateProduct(state, updatedProduct) {
   // Find the product in the state by its ID and update it
   const index = state.products.findIndex((product) => product.id === updatedProduct.id);
@@ -159,13 +175,13 @@ updateProduct(state, updatedProduct) {
       console.log("Reached");
       try {
         const res = await axios.post(`https://capstone-sb96.onrender.com/users`, payload);
-        console.log("Res: ", res.data);
-        const { msg, err, token } = res.data;
-        if (msg === "An error occured") {
-          context.commit("setError", msg);
+        console.log("Res: ", res.data.status);
+        const { message, err, token } = res.data;
+        if (message === "An error occured") {
+          context.commit("setError", message);
           context.commit("setRegStatus", "Not registered");
-          return { success: false, error: msg };
-        } else if (token) {
+          return { success: false, error: message };
+        } else if (token) { ``
           context.commit("setToken", token);
           context.commit("setRegStatus", "Registered successfully");
           return { success: true, token };
@@ -229,17 +245,35 @@ updateProduct(state, updatedProduct) {
     },
 
     addToCart({ commit, state }, product) {
-      const cartItem = state.cartItems.find((item) => item.product.id === product.id);
-      if (cartItem) {
-        commit('incrementItemQuantity', cartItem);
-      } else {
+      // Check if the user is authenticated before allowing them to add items to the cart
+      if (state.token) {
         commit('addToCart', product);
+      } else {
+        // Handle the case where the user is not authenticated (e.g., show a login prompt)
+        // You can also route the user to the login page.
       }
     },
-
+  
+    removeFromCart({ commit }, productId) {
+      commit('removeFromCart', productId);
+    },
+  
     clearCart({ commit }) {
       commit('clearCart');
     },
+
+    // addToCart({ commit, state }, product) {
+    //   const cart = state.cart.find((item) => item.product.id === product.id);
+    //   if (cart) {
+    //     commit('incrementItemQuantity', cart);
+    //   } else {
+    //     commit('addToCart', product);
+    //   }
+    // },
+
+    // clearCart({ commit }) {
+    //   commit('clearCart');
+    // },
 
     async updateProduct({ commit }, updatedProductData) {
       try {

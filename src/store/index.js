@@ -19,6 +19,9 @@ export default createStore({
     cart: null, 
   },
   getters: {
+    cartTotalPrice(state) {
+      return state.cart.reduce((total, product) => total + product.amount, 0);
+    },
   
   },
   mutations: {
@@ -71,8 +74,14 @@ decrementProductQuantity(state, productId) {
   }
 },
 
+//remove from cart
+removeFromCart(state, prodID) {
+  // Remove the item from the cart state
+  state.cart = state.cart.filter((product) => product.prodID !== prodID);
+},
+
 clearCart(state) {
-  state.cartItems = [];
+  state.cart = [];
 },
 
 //login and register
@@ -261,7 +270,6 @@ async getCart(context, id) {
 },
 
 //add to cart
-// In your Vuex store module
 
 async addToCart({ commit }, { userID, prodID }) {
   try {
@@ -286,12 +294,30 @@ async addToCart({ commit }, { userID, prodID }) {
   }
 },
 
+//remove from cart function
+async removeFromCart({ commit }, { userID, prodID }) {
+  try {
+    // Send a DELETE request to your server's API endpoint
+    await axios.delete(`https://capstone-sb96.onrender.com/user${userID}/cart/${prodID}`);
+
+    // Commit the mutation to remove the item from the cart in the store
+    commit('removeFromCart', prodID);
+
+    // Optionally, update the cart's total price or perform other operations
+  } catch (error) {
+    console.error(error);
+    // Handle network errors or other exceptions
+  }
+},
+
 
 },
 
-    clearCart({ commit }) {
-      commit('clearCart');
-    },
+// checkout 
+clearCart({ commit }) {
+  // Clear the cart in the store
+  commit('clearCart');
+},
 
 
     async updateProduct({ commit }, updatedProductData) {

@@ -8,11 +8,13 @@
     <div v-else> -->
       <div v-for="product in getCart" :key="product.prodID">
          Name: {{ product.prodName }} - Price: {{ product.amount }} - Quantity: {{ product.quantity }}  
-        <button @click="removeFromCart(product.prodID)">Remove</button>
+         <button @click="removeFromCart(product.prodID)">Remove</button>
+         <div>Total Price: R{{ cartTotalPrice }}</div>
 <!-- Total Price: ${{ cartTotalPrice }} -->
 <!-- <div v-if="getCart.length > 0">
   Total Price: ${{ calculateTotalPrice() }}
 </div> -->
+<button @click="checkout">Checkout</button>
 
   </div>
   </div>
@@ -29,11 +31,34 @@ export default {
       },
       user(){
         return this.$store.state.userData
-      }
+      },
+      cartTotalPrice() {
+      return this.$store.getters.cartTotalPrice;
     },
+    },
+    
     mounted() {
       this.$store.dispatch('getCart', this.user.userID)
-    }
+    },
+    methods: {
+
+      checkout() {
+      // Redirect to the login page
+      this.$router.push('/login');
+    },
+    removeFromCart(prodID) {
+      // Ensure the user is logged in
+      if (this.userData && this.userData.userID) {
+        // Call the removeFromCart action with userID and prodID
+        this.$store.dispatch('removeFromCart', {
+          userID: this.userData.userID,
+          prodID,
+        });
+      } else {
+        // Handle the case where the user is not logged in, prompt for login, etc.
+      }
+    },
+  },
 }
 </script>
 

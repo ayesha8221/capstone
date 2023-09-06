@@ -42,7 +42,7 @@ const insertUser = (data, result) => {
 
  const userLogin = (req, res) => {
     const { emailAdd, userPass } = req.body;
-    const query = `SELECT firstName, lastName, userRole, emailAdd, userPass, userProfile FROM Users WHERE emailAdd = '${emailAdd}'`;
+    const query = `SELECT userID, firstName, lastName, userRole, emailAdd, userPass, userProfile FROM Users WHERE emailAdd = '${emailAdd}'`;
     db.query(query, async (err, result) => {
       if (err) throw err;
       if (!result?.length) {

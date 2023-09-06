@@ -1,6 +1,8 @@
 <template>
-    <div class="body" v-if="products">
-              <div class="row table-container">
+    
+      <div v-show="userRole === 'Admin'">
+      <div class="body" v-if="products">
+      <div class="row table-container">
                 <div class="col-12">
                   <h1>Products</h1>
                   <button>
@@ -49,6 +51,8 @@
                   </table>
                 </div>
               </div>
+    </div>
+              
             </div>
     
     </template>
@@ -62,8 +66,11 @@
     computed: {
     products() {
       return this.$store.state.products
-    }
     },
+    userRole() {
+      return this.$store.state.userRole;
+    },
+  },
     
     mounted() {
     this.$store.dispatch("getProducts")

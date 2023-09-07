@@ -6,25 +6,38 @@
       Your cart is empty.
     </div>
     <div v-else> -->
-      <div v-for="product in getCart" :key="product.prodID">
-        <t-body>
-          <tr>
-            <th>Image</th>
-            <th> Name</th>
+      <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
           <th>Price</th>
-          <th> Quantity</th>
-          </tr>
-          <tr>
-            <td><img class="tableImg" :src="product.prodUrl" :alt="product.prodName" /></td>
-            <td>{{ product.prodName }}</td>
-            <td>{{ product.amount }}</td>
-            <td>{{ product.quantity }}</td>
-          </tr>
-          <td></td>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="product in getCart" :key="product.prodID">
+          <td><img class="tableImg" :src="product.prodUrl" :alt="product.prodName" /></td>
+          <td>{{ product.prodName }}</td>
+          <td>{{ product.amount }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <button @click="removeFromCart(product.cartID)">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>Total Price: R{{  cartTotalPrice }}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-          
-        </t-body>
-        <div>Total Price: R{{  cartTotalPrice }}</div>
+    <div>
+      <button @click="checkout">Checkout</button>
+    </div>
+        
 
 
 
@@ -32,15 +45,14 @@
 
 
          <!-- Name: {{ product.prodName }} - Price: {{ product.amount }} - Quantity: {{ product.quantity }}   -->
-         <button @click="removeFromCart(product.cartID)">Remove</button>
          
-         <button @click="checkout">Checkout</button>
+         
 <!-- Total Price: ${{ cartTotalPrice }} -->
   <!-- Total Price: ${{ calculateTotalPrice() }} -->
 </div>
 
 
-  </div>
+
   <!-- </div> -->
   <!-- </div> -->
 </template>

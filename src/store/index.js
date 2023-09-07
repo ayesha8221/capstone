@@ -289,7 +289,6 @@ async addToCart({ commit }, { userID, prodID }) {
     }
   } catch (error) {
     console.error(error);
-    // Handle network errors or other exceptions
   }
 },
 
@@ -305,20 +304,6 @@ async removeFromCart({ commit }, { userID, cartID }) {
   }
 },
 
-// async removeFromCart({ commit }, { userID, cartID }) {
-//   try {
-//     // Send a DELETE request to your server's API endpoint
-//     await axios.delete(`https://capstone-sb96.onrender.com/user${userID}/cart/${cartID}`);
-
-//     // Commit the mutation to remove the item from the cart in the store
-//     commit('removeFromCart', cartID);
-
-//     // Optionally, update the cart's total price or perform other operations
-//   } catch (error) {
-//     console.error(error);
-//     // Handle network errors or other exceptions
-//   }
-// },
 
 
 },

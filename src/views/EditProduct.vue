@@ -42,7 +42,7 @@
                       placeholder="http://"
                       required
                     />
-                    <button @click="submitUpdate">Update Product</button>
+                    <button @click="updateProduct">Save Changes</button>
             </div>
             
           </div>
@@ -65,22 +65,40 @@
     };
   },
   methods: {
-    async submitUpdate() {
-      // Pass this.updatedProduct to your updateProduct action
-      const success = await this.$store.dispatch('updateProduct', this.updatedProduct);
-
-      if (success) {
-        // Product updated successfully, handle any additional logic here
-      } else {
-        // Product update failed, handle errors or show an error message
-      }
+    updateProduct() {
+      // Assuming you have a form with editedProductData containing the updated product data
+      this.$store
+        .dispatch('editProduct', this.editedProductData)
+        .then(() => {
+          // Product successfully edited, you can redirect or show a success message
+        })
+        .catch((error) => {
+          console.error('Error editing product:', error);
+          console.log(error)
+          // Handle the error, show an error message, or perform error handling
+        });
     },
   },
-    mounted() {
-    this.$store.dispatch('getProduct', this.$route.params.id).then(() => {
-      this.updatedProduct = { ...this.$store.state.product }; // Copy the current product data
-  })
-  },
+  props: ["id"],
+        computed: {
+          product() {
+            return this.$store.state.product;
+          },
+          id() {
+        return this.$route.params.id
+      },
+        },
+        // mounted() {
+        //   this.$store.dispatch("getProduct", this.id),
+        //   this.$store.dispatch("getProducts");
+        // },
+        mounted() {
+  console.log('Route params:', this.$route.params);
+  const productId = this.$route.params.id;
+  console.log('Product ID:', productId);
+  this.$store.dispatch("getProduct", this.id),
+          this.$store.dispatch("getProducts");
+}
 }
 
       

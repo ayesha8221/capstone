@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td>
-            <div>Total Price: R{{  cartTotalPrice }}</div>
+            <!-- <div>Total Price: R{{ cartTotalPrice }}</div> -->
           </td>
         </tr>
       </tbody>
@@ -37,24 +37,7 @@
     <div>
       <button @click="checkout">Checkout</button>
     </div>
-        
-
-
-
-
-
-
-         <!-- Name: {{ product.prodName }} - Price: {{ product.amount }} - Quantity: {{ product.quantity }}   -->
-         
-         
-<!-- Total Price: ${{ cartTotalPrice }} -->
-  <!-- Total Price: ${{ calculateTotalPrice() }} -->
 </div>
-
-
-
-  <!-- </div> -->
-  <!-- </div> -->
 </template>
 
 <script>

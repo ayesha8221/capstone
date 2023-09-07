@@ -24,9 +24,6 @@ export default {
       this.$store.commit("setUserData", JSON.parse(userData));
     }
   },
-  // mounted() {
-  //     this.$store.dispatch('getCart', this.user.userID)
-  //   },
 }
 </script>
 

@@ -184,6 +184,23 @@ setError(state, error) {
       }
     },
 
+    //update product
+    editProduct({ commit }, editedProductData) {
+      return new Promise((resolve, reject) => {
+        // Make an API call to update the product data on the server
+        axios
+          .put(`https://capstone-sb96.onrender.com/products/${editedProductData.id}`, editedProductData)
+          .then((response) => {
+            // If the API call is successful, commit a mutation to update the state
+            commit('updateProduct', response.data);
+            resolve(response.data); // Resolve the promise with the updated product data
+          })
+          .catch((error) => {
+            reject(error); // Reject the promise if there's an error
+          });
+      });
+    },
+
     
 // login and register
 

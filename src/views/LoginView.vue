@@ -85,7 +85,17 @@ export default {
         console.error("Error while logging in: ", e);
       }
     },
+    
+    login() {
+    // Your login logic here
+
+    // If login is successful, clear the cart
+    if (loginSuccessful) {
+      this.$store.dispatch('clearCart');
+    }
   },
+  },
+  
 }
 </script>
 <style scoped>

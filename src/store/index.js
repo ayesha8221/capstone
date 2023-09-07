@@ -281,8 +281,6 @@ async addToCart({ commit }, { userID, prodID }) {
 
     // Handle the response as needed
     if (response.status === 200) {
-      // The item was added to the cart successfully
-      // You can commit a mutation to update the cart in your store if needed
       commit('addProductToCart', response.data); // Assuming the response contains the added product
     } else {
       // Handle other response statuses or errors

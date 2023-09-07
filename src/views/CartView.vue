@@ -32,7 +32,7 @@
 
 
          <!-- Name: {{ product.prodName }} - Price: {{ product.amount }} - Quantity: {{ product.quantity }}   -->
-         <button @click="removeItemFromCart(product.cartID)">Remove</button>
+         <button @click="removeFromCart(product.cartID)">Remove</button>
          
          <button @click="checkout">Checkout</button>
 <!-- Total Price: ${{ cartTotalPrice }} -->
@@ -71,40 +71,17 @@ export default {
       // Redirect to the login page
       this.$router.push('/login');
     },
-    removeItemFromCart() {
-  const userID = this.user.userID;
-  const cartID = this.data;
-  this.$store.dispatch('removeFromCart', { userID, cartID }) // Pass prodID as cartID
-    .then(() => {
-      this.getCart.cartID = this.$router.params.id
-      console.log(cartID)
-    })
-    .catch((error) => {
-      console.error('Error removing item from cart:', error);
-    });
-},
-//     removeItemFromCart(userID, cartID) {
-//   this.$store.dispatch('removeFromCart', { userID, cartID })
-//   console.log('removeFromCart')
-//     .then(() => {
-//       // Optional: Display a success message or perform other actions
-//     })
-//     .catch((error) => {
-//       console.error('Error removing item from cart:', error);
-//       // Optional: Display an error message or perform error handling
-//     });
-// },
-    // removeFromCart(cartID) {
-    //   // Ensure the user is logged in
-    //   if (this.userData && this.userData.userID) {
-    //     this.$store.dispatch('removeFromCart', {
-    //       userID: this.userData.userID,
-    //       cartID,
-    //     });
-    //   } else {
-    //     // Handle the case where the user is not logged in, prompt for login, etc.
-    //   }
-    // },
+    removeFromCart(cartID) {
+    const userID = this.user.userID;
+    
+    this.$store.dispatch('removeFromCart', { userID, cartID })
+      .then(() => {
+        // Optional: Perform any additional actions after successful removal
+      })
+      .catch((error) => {
+        console.error('Error removing item from cart:', error);
+      });
+  },
   },
 }
 </script>

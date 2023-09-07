@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <loading-spinner v-else />
+    <loading-spinner v-else />  
   </template>
   <script>
   import LoadingSpinner from '@/components/LoadingSpinner.vue'

@@ -75,9 +75,9 @@ decrementProductQuantity(state, productId) {
 },
 
 //remove from cart
-removeFromCart(state, prodID) {
+removeFromCart(state, cartID) {
   // Remove the item from the cart state
-  state.cart = state.cart.filter((product) => product.prodID !== prodID);
+  state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
 },
 
 clearCart(state) {
@@ -266,7 +266,7 @@ setError(state, error) {
 async getCart(context, id) {
   const res = await axios.get(`https://capstone-sb96.onrender.com/user/${id}/carts`);
   context.commit('setCart', res.data)
-  console.log(id);
+  console.log(res.data);
 },
 
 //add to cart
@@ -281,6 +281,7 @@ async addToCart({ commit }, { userID, prodID }) {
 
     // Handle the response as needed
     if (response.status === 200) {
+
       commit('addProductToCart', response.data); // Assuming the response contains the added product
     } else {
       // Handle other response statuses or errors
@@ -293,20 +294,31 @@ async addToCart({ commit }, { userID, prodID }) {
 },
 
 //remove from cart function
-async removeFromCart({ commit }, { userID, prodID }) {
+
+async removeFromCart({ commit }, { userID, cartID }) {
   try {
-    // Send a DELETE request to your server's API endpoint
-    await axios.delete(`https://capstone-sb96.onrender.com/user${userID}/cart/${prodID}`);
+    await axios.delete(`https://capstone-sb96.onrender.com/user/${userID}/cart/${cartID}`);
 
-    // Commit the mutation to remove the item from the cart in the store
-    commit('removeFromCart', prodID);
-
-    // Optionally, update the cart's total price or perform other operations
+    commit('removeFromCart', cartID);
   } catch (error) {
     console.error(error);
-    // Handle network errors or other exceptions
   }
 },
+
+// async removeFromCart({ commit }, { userID, cartID }) {
+//   try {
+//     // Send a DELETE request to your server's API endpoint
+//     await axios.delete(`https://capstone-sb96.onrender.com/user${userID}/cart/${cartID}`);
+
+//     // Commit the mutation to remove the item from the cart in the store
+//     commit('removeFromCart', cartID);
+
+//     // Optionally, update the cart's total price or perform other operations
+//   } catch (error) {
+//     console.error(error);
+//     // Handle network errors or other exceptions
+//   }
+// },
 
 
 },

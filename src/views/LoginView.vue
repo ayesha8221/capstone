@@ -9,23 +9,26 @@
 
         <form class="form-inline" action="/action_page.php" @submit.prevent="userLogin" >
   <div class="form-group">
-    <label for="email">Email address:</label>
+    <label for="email">Email address</label><br>
     <input
           type="email"
           name="email"
           v-model="emailAdd"
-          placeholder=""
+          placeholder="@gmail.com"
         />
   </div>
   <br>
   <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" v-model="userPass" name="password" />
-  </div>
-  <div class="checkbox">
+    <label for="pwd">Password</label><br>
+    <input type="password" v-model="userPass" name="password" placeholder="enter password" />
+  </div><br>
+  <!-- <div class="checkbox">
     <label><input type="checkbox"> Remember me</label>
-  </div>
+  </div> -->
   <button type="submit" class="btn btn-default">Log in</button>
+  <br>
+  <router-link to="/register"> Create Account </router-link>
+  
 </form>
 
 
@@ -112,8 +115,11 @@ export default {
     
     /* height: 600px; */
     width: 745px;
-    border: solid red;
+    /* border: solid red; */
     padding-left: 25px;
+    border: 1px solid #995C23;
+    background: #d6b495;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .login {
@@ -124,5 +130,52 @@ export default {
     text-align:center
 }
 
-    
+h1 {
+  color: #995C23;
+text-align: center;
+font-family: Inter;
+font-size: 45px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #462507;
+padding-bottom: 5%;
+}
+
+button.btn.btn-default {
+  background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+}
+
+input {
+  width:80%;
+  background-color: #f6e1ce;
+  border: #a57344 solid 2px;
+  /* box-shadow: #462507 0.5px 0.5px 0.5px; */
+}
+
+label {
+  color: #673f19;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 0.3px #995C23;
+}
+
+a{
+  padding-top: 5%;
+  text-decoration: none;
+  color: black;
+}
+
 </style>

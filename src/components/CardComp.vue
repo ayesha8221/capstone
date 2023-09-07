@@ -6,7 +6,7 @@
         <img :src="product.prodUrl" :alt="product.prodName" class="picture" />
         <h5>{{ product.prodName }}</h5>
         <p> R {{ product.amount }}</p>
-        <button><router-link class="button" :to="{ name: 'product', params: { id: product.prodID } }"> View Details
+        <button class="button"><router-link  :to="{ name: 'product', params: { id: product.prodID } }"> View Details
       </router-link></button>
     </div>
   </div>
@@ -47,14 +47,16 @@ img {
   text-align: center;
 }
 
-.button {
+button {
   background: #462507;
-  width:100px;
+  width:140px;
   height: 40px;
   font-weight: 600;
   font-size: 18px;
   color: #E4C2A2;
-text-align: center;
+  text-align: center !important;
+  justify-content: center;
+  align-items: center;
 border: none;
 }
 

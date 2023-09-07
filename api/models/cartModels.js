@@ -5,7 +5,7 @@ const { compare } = require("bcrypt")
 
 // Get everything from users cart
 const getCart = (id, result,) => {
-  db.query("SELECT Cart.cartID, Products.prodName AS prodName, Products.amount, Products.quantity FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?",
+  db.query("SELECT Cart.cartID, Products.prodName AS prodName, Products.amount, Products.quantity, Products.prodUrl FROM Cart JOIN Products ON Cart.prodID = Products.prodID WHERE Cart.userID = ?",
    [id], (err, results) => {             
       if(err) {
           console.log(err);

@@ -37,9 +37,6 @@
     <!-- <label for="pwd">Password:</label> -->
     <input type="picture" class="form-control" id="userProfile" placeholder="url" v-model="userProfile">
   </div>
-  <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-  </div>
   <button type="submit" class="btn btn-default">Register</button>
 </form>
 
@@ -109,7 +106,6 @@ export default {
 
 
 <style scoped>
-
 .all {
     background-color: #E4C2A2 !important;
 }
@@ -119,11 +115,14 @@ export default {
     /* padding-top: 80px; */
 }
 .card {
-    
     /* height: 600px; */
     width: 745px;
-    border: solid red;
+    /* border: solid red; */
     padding-left: 25px;
+    border: 1px solid #995C23;
+    background: #d6b495;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-align: center;
 }
 
 .login {
@@ -133,6 +132,51 @@ export default {
 .col {
     text-align:center
 }
+
+h1 {
+  color: #995C23;
+text-align: center;
+font-family: Inter;
+font-size: 45px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #462507;
+padding-bottom: 5%;
+}
+
+button.btn.btn-default {
+  background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+ 
+}
+
+input {
+  width:80%;
+  background-color: #f6e1ce;
+  border: #a57344 solid 2px;
+  /* box-shadow: #462507 0.5px 0.5px 0.5px; */
+  text-align: center;
+}
+
+label {
+  color: #673f19;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 0.3px #995C23;
+}
+
 
     
 </style>

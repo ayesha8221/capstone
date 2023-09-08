@@ -1,19 +1,18 @@
 
 <template>
-  <div>
+  <div >
     <!-- Display cart contents and total price -->
-    <!-- <div v-if="products && products.length > 0">
+    <div v-if="products && products.length > 0">
       Your cart is empty.
     </div>
-    <div v-else> -->
-      <table>
+    <div v-else>
+      <table class="container">
       <thead>
         <tr>
           <th>Image</th>
           <th>Name</th>
           <th>Price</th>
           <th>Quantity</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -23,21 +22,30 @@
           <td>{{ product.amount }}</td>
           <td>{{ product.quantity }}</td>
           <td>
-            <button @click="removeFromCart(product.cartID)">Delete</button>
+            <button class="delete" @click="removeFromCart(product.cartID)">Delete</button>
           </td>
         </tr>
-        <tr>
-          <td>
+          
+        
+        
+          
             <!-- <div>Total Price: R{{ cartTotalPrice }}</div> -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
 
-    <div>
-      <button @click="checkout">Checkout</button>
+        
+      </tbody>
+
+    
+            <button class="checkout" @click="checkout">Checkout</button>
+          
+    </table>
+    
+  </div>
+<div>
+      
     </div>
-</div>
+    
+
+  </div>
 </template>
 
 <script>
@@ -80,3 +88,69 @@ export default {
   },
 }
 </script>
+<style scoped>
+* {
+  background-color: #E4C2A2;
+}
+
+.tableImg {
+  width: 20%;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+table{
+  width: 100%;
+}
+
+tbody {
+  text-align: center;
+  
+}
+
+thead {
+  color: #3C6866;
+text-align: center;
+font-family: Inter;
+font-size: 35px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #5a3009;
+
+}
+
+th, td, tr {
+  /* border: solid black; */
+  border: 2px solid #995C23;
+/* background: #CAAE95; */
+}
+
+td {
+  font-weight: 600;
+  color: #462507;
+}
+
+
+
+.checkout {
+  margin: 30px 0 30px 0 ;
+  
+}
+
+.delete, .checkout {
+  background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+border: none;
+padding: 3px 3px 3px 3px;
+}
+
+</style>

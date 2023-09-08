@@ -10,19 +10,19 @@
         <br>
         <ul class="list-unstyled mb-0">
           <li>
-            <a href="#!" class="text-dark">About Us</a>
+            <router-link to="/about" >About Us</router-link>
           </li>
           <br>
           <li>
-            <a href="#!" class="text-dark">Products</a>
+            <router-link to="/products" >Products</router-link>
           </li>
           <br>
           <li>
-            <a href="#!" class="text-dark">Admin</a>
+            <router-link to="/cart" >Cart</router-link>
           </li>
           <br>
           <li>
-            <a href="#!" class="text-dark">Account</a>
+            <router-link to="/admin">Account</router-link>
           </li>
         </ul>
       </div>
@@ -34,17 +34,17 @@
         <br>
         <ul class="list-unstyled">
           <li>
-            <a href="#!" class="text-dark">098 765 4321</a>
+            <a href="#!">098 765 4321</a>
           </li>
           <br>
           <li>
-            <a href="#!" class="text-dark">34 Marilyn Monroe street,
+            <a href="#!">34 Marilyn Monroe street,
 Rose estate, Cape Town, Western Cape
 7389</a>
           </li>
           <br>
           <li>
-            <a href="#!" class="text-dark">ayesha@email.com</a>
+            <a href="#!">roast&revelry@gmail.com</a>
           </li>
         </ul>
       </div>
@@ -55,19 +55,19 @@ Rose estate, Cape Town, Western Cape
         <br>
         <ul class="list-unstyled">
           <li>
-            <a href="https://www.instagram.com/accounts/login/" target="_blank" class="text-dark">Instagram</a>
+            <a href="https://www.instagram.com/accounts/login/" target="_blank" class="text-dark"><img class="icons" src="https://i.postimg.cc/PJnDPx2k/174855-removebg-preview.png" alt=""></a>
           </li>
           <br>
           <li>
-            <a href="https://twitter.com/i/flow/login" target="_blank" class="text-dark">Twitter</a>
+            <a href="https://twitter.com/i/flow/login" target="_blank" class="text-dark"><img class="icons" src="https://i.postimg.cc/6QpW9XK5/733579-removebg-preview.png" alt=""></a>
           </li>
           <br>
           <li>
-            <a href="https://web.facebook.com/?_rdc=1&_rdr" target="_blank" class="text-dark">Facebook</a>
+            <a href="https://web.facebook.com/?_rdc=1&_rdr" target="_blank" class="text-dark"><img class="icons" src="https://i.postimg.cc/x1LppJNW/3670032-removebg-preview.png" alt=""></a>
           </li>
           <br>
           <li>
-            <a href="https://www.tiktok.com/foryou?showLogin=1&loginType=/login" target="_blank" class="text-dark">Tiktok</a>
+            <a href="https://www.tiktok.com/foryou?showLogin=1&loginType=/login" target="_blank" class="text-dark"><img class="icons" src="https://i.postimg.cc/rp7myw9C/3046121-removebg-preview.png" alt=""></a>
           </li>
         </ul>
       </div>
@@ -77,26 +77,33 @@ Rose estate, Cape Town, Western Cape
       <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
         <h5 class="text-uppercase text-align-center">Get In Touch With Us</h5>
 
-        <ul class="list-unstyled mb-0">
+        <form action="https://formspree.io/f/xrgwkdao"
+  method="POST">
+          <ul class="list-unstyled mb-0">
           <li>
             <div class="form-floating mb-3">
-  <input type="name" class="form-control" id="floatingInput" placeholder="Your name">
+  <input type="name" name="name" class="form-control" id="floatingInput" placeholder="Your name" required>
   <label for="floatingInput">Full Name</label>
 </div>
           </li>
           <li>
             <div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
   <label for="floatingInput">Email address</label>
 </div>
           </li>
           <li>
             <div class="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-  <label for="floatingTextarea">Comments</label>
+  <textarea name="message" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" required ></textarea>
+  <label for="floatingTextarea" >Comments</label>
 </div>
           </li>
+          <li>
+            <button class="submit"> Submit </button>
+          </li>
         </ul>
+        </form>
+        
       </div>
     </div>
   </div>
@@ -121,7 +128,7 @@ export default {
 .text-uppercase.mb-0, .text-uppercase, .text-uppercase.text-align-center {
   color: #995C23;
 font-family: Inter;
-font-size: 20px;
+font-size: 22px;
 font-weight: 600;
 line-height: normal;
 -webkit-text-stroke: 0.2px #E4C2A2;
@@ -133,6 +140,7 @@ line-height: normal;
 
 a {
   color: #E4C2A2;
+  text-decoration: none;
 }
 
 input, textarea {
@@ -144,6 +152,32 @@ input, textarea {
   cursor: pointer;
   color: #603207;
   padding-left: 20px;
+  margin-bottom: 2%;
+}
+
+.icons {
+  width:36px;
+}
+
+.submit {
+  background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+border: solid rgb(121, 74, 13);
+padding: 3px 3px 3px 3px;
+}
+
+.col-lg-2.col-md-6.mb-4.mb-md-0 {
+  text-align: center;
+}
+
+li, h5, label {
+  text-align: center;
 }
     
 </style>

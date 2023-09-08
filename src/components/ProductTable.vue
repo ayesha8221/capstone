@@ -59,10 +59,7 @@
     
     <script>
     
-    // import axios from 'axios'
-    
     export default {
-    // props: ["products"],
     computed: {
     products() {
       return this.$store.state.products

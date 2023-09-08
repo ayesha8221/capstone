@@ -189,7 +189,7 @@ setError(state, error) {
       return new Promise((resolve, reject) => {
         // Make an API call to update the product data on the server
         axios
-          .put(`https://capstone-sb96.onrender.com/products/${editedProductData.id}`, editedProductData)
+          .put(`https://capstone-sb96.onrender.com/products/${editedProductData}`, editedProductData)
           .then((response) => {
             // If the API call is successful, commit a mutation to update the state
             commit('updateProduct', response.data);

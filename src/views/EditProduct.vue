@@ -5,44 +5,44 @@
             <label class="label">Product Name</label>
                     <input
                       class="input"
-                      v-model="product.prodName"
+                      v-model="updateProduct.prodName"
                       type="text"
-                      placeholder="Product Name"
+                      :placeholder="product.prodName"
                       required
                     />
                     <label class="label">Quantity</label>
                     <input
                       class="input"
-                      v-model="product.quantity"
+                      v-model="updateProduct.quantity"
                       type="text"
-                      placeholder="quantity"
+                      :placeholder="product.quantity"
                       required
                     />
                     <label class="label">Price</label>
                     <input
                       class="input"
-                      v-model="product.amount"
+                      v-model="updateProduct.amount"
                       type="number"
-                      placeholder="R"
+                      :placeholder="product.amount"
                       required
                     />
                     <label class="label">Category</label>
                     <input
                       class="input"
-                      v-model="product.category"
+                      v-model="updateProduct.category"
                       type="text"
-                      placeholder="category"
+                      :placeholder="product.category"
                       required
                     />
                     <label class="label">Image</label>
                     <input
                       class="input"
-                      v-model="product.prodUrl"
+                      v-model="updateProduct.prodUrl"
                       type="text"
-                      placeholder="http://"
+                      :placeholder="product.prodUrl"
                       required
                     />
-                    <button @click="updateProduct">Save Changes</button>
+                    <button @click="updateProduct(id.prodID)">Save Changes</button>
             </div>
             
           </div>
@@ -52,10 +52,16 @@
       <script>
       
       export default {
+        computed:{
+  id(){
+    return this.$store.state.products
+  }
+        },
 
         data() {
     return {
       updatedProduct: {
+        id: this.id,
         prodName: '', // Initialize with the current product data
         quantity: '',
         amount: '',
@@ -84,9 +90,9 @@
           product() {
             return this.$store.state.product;
           },
-          id() {
-        return this.$route.params.id
-      },
+      //     id() {
+      //   return this.$route.params.id
+      // },
         },
         // mounted() {
         //   this.$store.dispatch("getProduct", this.id),

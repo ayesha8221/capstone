@@ -1,6 +1,9 @@
 <template>
+  
   <div class="about">
-    <div class="container one d-flex justify-content-center align-content-center">
+    <div class="first" >
+      <img class="border" src="https://i.postimg.cc/Bv3f5cBh/ed379674-8a22-4517-9c15-d6966228fc6f-removebg-preview.png" alt="">
+    <div  id="margin" class="container one d-flex justify-content-center align-content-center">
   <div class="row">
     <div class="col-6"><img class="beans" src="https://i.postimg.cc/76ByTFD3/photo-1597816792530-f6d57bd2bf9e.jpg" style="height:500px;" alt="ourBeans"></div>
     <div class="col-6"> <h5 class="grow up">Our Beans</h5> <p>Our journey begins with a deep-rooted dedication to responsible sourcing. We believe that every cup of coffee tells a story, and that story begins at the source. That's why we meticulously curate our beans from local, responsible sources, nurturing relationships with farmers who share our passion for excellence and ethical practices.</p>
@@ -8,6 +11,8 @@
 <p>By sourcing our beans locally, we not only support the livelihoods of hardworking farmers in our community but also reduce our carbon footprint, contributing to a healthier planet. Our commitment to sustainability extends beyond just our products; it's a core principle that guides every aspect of our business.</p></div>
   </div>
 </div>
+    </div>
+    
     <div class="container one d-flex justify-content-center align-content-center">
   <div class="row">
     <div class="col-6"> <h5 class="grow">Our Packaging</h5><p>Our packaging journey begins with a careful selection of materials. We've gone the extra mile to choose eco-friendly packaging options that reduce waste and minimize our environmental impact. From compostable bags to recyclable labels, every element is designed with the planet in mind.</p>
@@ -43,8 +48,8 @@ export default {
   background-color: #E4C2A2;
 }
 .container.one, .container.two.d-flex.justify-content-center.align-content-center {
-  padding-top: 7%;
-  /* padding-bottom: 7%; */
+  padding-top: 2%;
+  padding-bottom: 7%;
   text-align: center;
 }
 
@@ -56,6 +61,21 @@ export default {
 }
 .equip {
   border: 8px solid #462507;
+}
+
+.margin {
+  margin-top: 2%
+}
+
+.first {
+  display: flex;
+}
+
+.border {
+  float: right;
+  border:#E4C2A2;
+  height: 30%;
+  width: auto;
 }
 
 .container.two.d-flex.justify-content-center.align-content-center {

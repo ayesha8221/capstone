@@ -18,12 +18,12 @@ export default createStore({
     logStatus: null,
     cart: null, 
   },
+
+
   getters: {
-    cartTotalPrice(state) {
-      return state.cart.reduce((total, product) => total + product.amount, 0);
-    },
-  
   },
+
+
   mutations: {
     setProducts: (state, products) => {
       state.products = products;
@@ -48,13 +48,16 @@ deleteProduct(state, productId) {
   state.products = state.products.filter((product) => product.id !== productId);
 },
 
-updateProduct(state, updatedProduct) {
-  // Find the product in the state by its ID and update it
-  const index = state.products.findIndex((product) => product.id === updatedProduct.id);
+// update/edit product
+
+updateProduct(state, data) {
+  const index = state.products.findIndex(product => product.id === data.id);
   if (index !== -1) {
-    state.products[index] = updatedProduct;
+    state.products[index] = data;
   }
 },
+
+
 
 //cart
 
@@ -67,18 +70,13 @@ setCart(state, value) {
 addProductToCart(state, product) {
   state.cart.push(product);
 },
-decrementProductQuantity(state, productId) {
-  const product = state.products.find((product) => product.id === productId);
-  if (product) {
-    product.quantity--;
-  }
-},
 
 //remove from cart
 removeFromCart(state, cartID) {
   // Remove the item from the cart state
   state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
 },
+
 
 clearCart(state) {
   state.cart = [];
@@ -169,6 +167,9 @@ setError(state, error) {
         return false; // Indicate failure.
       }
     },
+
+    //delete product admin
+
     async deleteProduct({ commit }, productId) {
       try {
         // Make the DELETE request to remove the product.
@@ -185,21 +186,20 @@ setError(state, error) {
     },
 
     //update product
-    editProduct({ commit }, editedProductData) {
-      return new Promise((resolve, reject) => {
-        // Make an API call to update the product data on the server
-        axios
-          .put(`https://capstone-sb96.onrender.com/products/${editedProductData}`, editedProductData)
-          .then((response) => {
-            // If the API call is successful, commit a mutation to update the state
-            commit('updateProduct', response.data);
-            resolve(response.data); // Resolve the promise with the updated product data
-          })
-          .catch((error) => {
-            reject(error); // Reject the promise if there's an error
-          });
-      });
-    },
+async updateProduct({ commit }, data) {
+  try {
+    const response = await axios.put(`https://capstone-sb96.onrender.com/products/${data.id}`, data);
+    if (response.status === 200) {
+      commit('updateProduct', data);
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.error(err);
+    return false; 
+  }
+},
 
     
 // login and register
@@ -331,20 +331,6 @@ clearCart({ commit }) {
   commit('clearCart');
 },
 
-
-    async updateProduct({ commit }, updatedProductData) {
-      try {
-        const response = await axios.put(`https://capstone-sb96.onrender.com/product/${updatedProductData.id}`, updatedProductData);
-  
-        // Commit the mutation to update the product in the state
-        commit('updateProduct', response.data);
-  
-        return true; // Indicate success
-      } catch (error) {
-        console.error(error);
-        return false; // Indicate failure
-      }
-    },
 
   modules: {
   }

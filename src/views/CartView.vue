@@ -25,12 +25,6 @@
             <button class="delete" @click="removeFromCart(product.cartID)">Delete</button>
           </td>
         </tr>
-          
-        
-        
-          
-            <!-- <div>Total Price: R{{ cartTotalPrice }}</div> -->
-
         
       </tbody>
 
@@ -71,7 +65,9 @@ export default {
     methods: {
 
       checkout() {
-      // Redirect to the login page
+
+
+        
       this.$router.push('/login');
     },
     removeFromCart(cartID) {

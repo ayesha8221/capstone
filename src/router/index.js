@@ -65,6 +65,15 @@ const routes = [
     props:true,
   },
   {
+    path: '/admin/edit/user/:id',
+    name: 'admin edit user',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/EditUser.vue'),
+    props:true,
+  },
+  {
     path: '/cart',
     name: 'cart',
     // route level code-splitting
@@ -87,6 +96,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/RegisterView.vue')
+  },
+  {
+    path: '/user/:id/cart',
+    name: 'checkout',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/CheckoutView.vue')
   }
 ]
 

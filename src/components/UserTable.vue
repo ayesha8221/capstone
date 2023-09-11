@@ -37,7 +37,7 @@
                   <td>
                     
                     <button>
-                      <!-- <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link> -->
+                      <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link>
                     </button>
                   </td>
                   <td>

@@ -28,7 +28,7 @@
         />
         <label class="label">Category</label>
         <input
-          class="input"
+          class="input" 
           v-model="data.category"
           type="text"
           :placeholder="product.category"
@@ -75,18 +75,15 @@ export default {
       // Dispatch the action to update the product
       this.$store.dispatch('updateProduct', data)
         .then(success => {
-          console.log('updatedProduct', data.id);
+          console.log('updatedProduct', data);
           if (success) {
             this.$router.push("/admin");
-            // Product updated successfully
-            // You can perform additional actions here, like showing a success message
+            // success message
           } else {
-            // Product update failed
-            // You can show an error message or handle the error as needed
+            // failed message
           }
         })
         .catch(error => {
-          // Handle any errors that occur during the update
           console.error(error);
         });
     },

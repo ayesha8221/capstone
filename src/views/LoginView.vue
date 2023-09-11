@@ -74,6 +74,8 @@ export default {
             icon: "success",
             title: "Logged in Successfully",
             text: "You are now logged in!",
+            background: "#995C23",
+            color: "black",
           });
           this.$router.push("/");
         } else {

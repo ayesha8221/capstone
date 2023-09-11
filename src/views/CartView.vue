@@ -2,10 +2,10 @@
 <template>
   <div >
     <!-- Display cart contents and total price -->
-    <div v-if="products && products.length > 0">
+    <!-- <div v-if="products && products.length > 0">
       Your cart is empty.
     </div>
-    <div v-else>
+    <div v-else> -->
       <table class="container">
       <thead>
         <tr>
@@ -28,7 +28,7 @@
         
       </tbody>
 
-    
+      <!-- <router-link :to="{ name: 'checkout', params: { id : product.prodID } }"> Checkout </router-link> -->
             <button class="checkout" @click="checkout">Checkout</button>
           
     </table>
@@ -39,7 +39,7 @@
     </div>
     
 
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -64,12 +64,17 @@ export default {
     },
     methods: {
 
-      checkout() {
+    //   async checkout() {
+    //   const userID = this.user.userID;
 
-
-        
-      this.$router.push('/login');
-    },
+    //   try {
+    //     await this.$store.dispatch("clearCart", { userID });
+    //     // Clear the cart and then redirect to the login page
+    //     this.$router.push(`users/${userID}/checkout`);
+    //   } catch (error) {
+    //     console.error("Error clearing cart:", error);
+    //   }
+    // },
     removeFromCart(cartID) {
     const userID = this.user.userID;
     

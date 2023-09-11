@@ -11,7 +11,7 @@
   </li>
   <br>
   <li class="nav-item">
-    <a class="smol" href="#">Wishlist</a>
+    <button @click="logout">Log out</button>
   </li>
   <br>
   <li class="nav-item">
@@ -36,7 +36,23 @@
 </template>
 <script>
 export default {
-
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    userData() {
+      return this.$store.state.userData;
+    },
+    userRole() {
+      return this.$store.state.userRole;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.push("/login");
+    },
+  },
 
 }
 

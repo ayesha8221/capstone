@@ -57,6 +57,13 @@ updateProduct(state, data) {
   }
 },
 
+updateUser(state, data) {
+  const index = state.users.findIndex(user => user.id === data.id);
+  if (index !== -1) {
+    state.users[index] = data;
+  }
+},
+
 
 
 //cart
@@ -79,8 +86,9 @@ removeFromCart(state, cartID) {
 
 
 clearCart(state) {
-  state.cart = [];
+  state.cartItems = [];
 },
+
 
 //login and register
 
@@ -201,6 +209,38 @@ async updateProduct({ commit }, data) {
   }
 },
 
+//update user 
+async updateUser(context, payload) {
+  try {
+    const { res } = await axios.put(`https://capstone-sb96.onrender.com/users/${payload.userID}`,
+      payload
+    );
+    const { msg, err } = res.data;
+    if (msg) {
+      context.commit("setUser", msg);
+    }
+    if (err) {
+      context.commit("setmessage", err);
+    }
+  } catch (e) {
+    context.commit("setmessage", "an error occured");
+  }
+},
+// async updateUser({ commit }, data) {
+//   try {
+//     const response = await axios.put(`https://capstone-sb96.onrender.com/users/${data.id}`, data);
+//     if (response.status === 200) {
+//       commit('updateProduct', data);
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     return false; 
+//   }
+// },
+
     
 // login and register
 
@@ -286,6 +326,15 @@ async getCart(context, id) {
   console.log(res.data);
 },
 
+// logout
+
+async logout(context) {
+  context.commit("setToken", null);
+  context.commit("setUser", null);
+  context.commit("setUserData", null);
+  Cookies.remove("userToken");
+},
+
 //add to cart
 
 async addToCart({ commit }, { userID, prodID }) {
@@ -321,16 +370,15 @@ async removeFromCart({ commit }, { userID, cartID }) {
   }
 },
 
-
-
+async clearCart({ commit }, { userID }) {
+  try {
+    await axios.delete(`https://capstone-sb96.onrender.com/user/${userID}/cart`);
+    commit("clearCart", userID);
+  } catch (error) {
+    console.error(error);
+  }
 },
-
-// checkout 
-clearCart({ commit }) {
-  // Clear the cart in the store
-  commit('clearCart');
 },
-
 
   modules: {
   }

@@ -74,6 +74,7 @@ const deleteCart = (req, res) => {
 const updateCart = (req, res) => {
   const data = req.body;
   const id = req.params.id;
+     data.userPass = bcrypt.hashSync(data.userPass, 10);
   updateCartById(data, id, (err, results) => {
     if (err) {
       res.send(err);

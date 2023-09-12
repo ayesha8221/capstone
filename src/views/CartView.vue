@@ -57,6 +57,7 @@ export default {
       cartTotalPrice() {
       return this.$store.getters.cartTotalPrice;
     },
+    
     },
     
     mounted() {

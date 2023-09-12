@@ -2,7 +2,6 @@
     <div>
         <div class="container">
     <div class="card my-4" id="body">
-      
         <img :src="product.prodUrl" :alt="product.prodName" class="picture" />
         <h5>{{ product.prodName }}</h5>
         <p> R {{ product.amount }}</p>

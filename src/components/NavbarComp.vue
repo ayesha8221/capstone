@@ -8,8 +8,8 @@
   <li><router-link to="/about" class="nav-link">About</router-link></li>
   <li><router-link to="/products" class="nav-link">Products</router-link></li>
   <li v-show="userRole === 'Admin'" ><router-link to="/admin" class="nav-link">Admin</router-link></li>
-      <li><router-link class="smol" to="/login">Login</router-link></li>
-      <li><router-link class="smol" to="/register">Register</router-link></li>
+      <li v-show="!userData" ><router-link class="smol" to="/login">Login</router-link></li>
+      <li v-show="!userData" ><router-link class="smol" to="/register">Register</router-link></li>
       <li  class="justify-content-end ms-auto"> 
     <router-link class="smol" to="/cart"><img class="cart" src="https://i.postimg.cc/dtWcCPk3/3737372-removebg-preview.png" alt=""></router-link>
   </li>
@@ -23,7 +23,7 @@
               </router-link>
   </li>
   <li>
-          <button @click="logout" class="link"><img src="https://i.postimg.cc/WzwDYRNK/icons8-logout-30.png" alt="">
+          <button @click="logout" class="link"><img class="logout" src="https://i.postimg.cc/WzwDYRNK/icons8-logout-30.png" alt="">
           </button>
         </li>
 </div>
@@ -154,6 +154,10 @@ img.profile {
   height: 40px;
   border-radius: 200px;
   margin-right: 15px;
+}
+
+img.logout{
+margin-right: 10px;
 }
 
 @keyframes shake {

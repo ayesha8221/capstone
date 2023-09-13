@@ -61,33 +61,35 @@
         <label>
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
-        <input type="submit" value="Continue to checkout" class="btn">
+    
       </form>
     </div>
   </div>
   <div class="col-25">
     <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
         <p v-for="product in getCart" :key="product.prodID">
-        <!-- <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4> -->
+        
       <p><a href="#">{{ product.prodName}}</a> <span class="price">{{product.amount }}</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
         </p>
       
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+      <span > Total: R{{  }}</span>
+      <button @click="clearCart">Checkout</button> 
     </div>
   </div>
         </div>
     </div>
 </template>
 <script>
+
+import { mapGetters } from 'vuex';
+
 export default {
     Name: 'setCart',
     computed: {
+      ...mapGetters(['cartTotalPrice']),
       getCart() {
-        console.log(this.$store.state.cart.cartID);
+        // console.log(this.$store.state.cart.cartID);
         return this.$store.state.cart
       },
       user(){
@@ -98,22 +100,24 @@ export default {
       return this.$store.getters.cartTotalPrice;
     },
     },
-    async checkout() {
+  
+    
+    mounted() {
+      this.$store.dispatch('getCart', this.user.userID)
+    },
+methods:{
+  async clearCart() {
       const userID = this.user.userID;
 
       try {
         await this.$store.dispatch("clearCart", { userID });
         // Clear the cart and then redirect to the login page
-        this.$router.push(`users/${userID}/checkout`);
+        this.$router.push("/cart");
       } catch (error) {
         console.error("Error clearing cart:", error);
       }
     },
-    
-    mounted() {
-      this.$store.dispatch('getCart', this.user.userID)
-    },
-
+}
 
   }
 

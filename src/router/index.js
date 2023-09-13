@@ -39,14 +39,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AdminView.vue')
   },
-  {
-    path: '/users/:id',
-    name: 'user',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/UserView.vue')
-  },
+  // {
+  //   path: '/users/:id',
+  //   name: 'user',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/UserView.vue')
+  // },
   {
     path: '/admin/add/product/',
     name: 'admin add product',
@@ -104,7 +104,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/CheckoutView.vue')
-  }
+  },
+  {
+    path: '/users/:id',
+    name: 'user',
+    component: () => import('@/views/UserView.vue'), // Replace with your user profile component
+    props: true, // Allows passing route params as props
+    meta: { requiresAuth: true }, 
+    }
 ]
 
 const router = createRouter({

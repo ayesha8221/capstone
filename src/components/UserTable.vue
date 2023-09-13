@@ -5,10 +5,8 @@
     </div>
     <div v-if="users">
         <div class="row table">
-          <div class="col-12">
             <h1>Users</h1>
           </div>
-          <div class="col">
             <table
               class="table is-striped is-bordered mt-2 is-fullwidth array-lists"
             >
@@ -46,10 +44,7 @@
                 </tr>
               </tbody>
             </table>
-          </div>
         </div>
-     
-    </div>
     <loading-spinner v-else/>
   </template>
   <script>
@@ -80,5 +75,39 @@
       width: 120px;
       height: auto;
   }
+
+  table{
+  width: 100%;
+  background-color: #995C23 !important;
+}
+
+tbody {
+  text-align: center;
+  background-color: #995C23 !important;
+}
+
+thead {
+  background-color: #995C23 !important;
+  color: #3C6866;
+text-align: center;
+font-family: Inter;
+font-size: 35px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #5a3009;
+
+}
+
+th, td, tr {
+  /* border: solid black; */
+  border: 2px solid #995C23;
+/* background: #CAAE95; */
+}
+
+td {
+  font-weight: 600;
+  color: #462507;
+}
   
   </style>

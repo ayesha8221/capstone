@@ -28,8 +28,10 @@
         
       </tbody>
 
-      <!-- <router-link :to="{ name: 'checkout', params: { id : product.prodID } }"> Checkout </router-link> -->
-            <button class="checkout" @click="checkout">Checkout</button>
+      <button class="checkout">
+        <router-link to="/checkout"> Checkout </router-link>
+      </button>
+            <!-- <button class="checkout" @click="checkout">Checkout</button> -->
           
     </table>
     
@@ -57,6 +59,7 @@ export default {
       cartTotalPrice() {
       return this.$store.getters.cartTotalPrice;
     },
+    
     },
     
     mounted() {

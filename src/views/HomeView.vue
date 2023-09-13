@@ -3,7 +3,7 @@
 <div>
   <div class="cont">
     <img src="https://i.postimg.cc/VLqfm845/istockphoto-637758628-2048x2048-transformed.jpg" alt="background" class="bg">
-    <button class="btn">See what we<br> have to offer</button>
+    <button class="btn"><router-link to="/products">See what we<br> have to offer</router-link></button>
     <div class="content">
     <h1>Roast & Revelry</h1>
     <p>Selecting only the finest coffee beans <br> and equipment for your convenience </p>
@@ -14,43 +14,61 @@
   
   <div class="conta">
   <img src="https://i.postimg.cc/mrJB3nqC/istockphoto-1168964829-612x612.jpg" alt="Snow" class="beans">
-  <button class="bttn">Learn More</button>
-  <p class="About">Welcome to Roast & Revelry, where passion for quality meets a commitment to community and sustainability. At Roast & Revelry, we take immense pride in crafting an exceptional coffee experience that not only tantalizes your taste buds but also resonates with your values.</p>
+  <button class="bttn"><router-link to="/about">Learn More</router-link></button>
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <p class="justify-content-center">
+        Did you know?<br>
+        Coffee Was Discovered by a Dancing Goat: According to legend, coffee was discovered by an Ethiopian goat herder named Kaldi, who noticed that his goats became unusually energetic and lively after eating coffee berries. He tried them himself and discovered the stimulating effects of coffee.
+      </p>
+    </div>
+    <div class="carousel-item">
+      <p class="justify-content-center">
+        Did you know?<br>
+        The World's Most Expensive Coffee: Kopi Luwak, also known as civet coffee, is one of the most expensive coffees in the world. It's made from coffee beans that have been eaten and then excreted by civet cats. The beans are cleaned, roasted, and brewed into coffee, resulting in a unique and pricey brew.
+      </p>
+    </div>
+    <div class="carousel-item">
+      <p class="justify-content-center">
+        Did you know?<br>
+        Coffee Can Help You Live Longer: Some studies suggest that moderate coffee consumption may be linked to a longer lifespan. So, coffee lovers have a good reason to keep enjoying their favorite brew!
+      </p>
+    </div>
+  </div>
 </div>
+  </div>
 </div>
 <div class="featured">
   <div>
     <h4>Featured products</h4>
   </div>
   <div class="container-fluid d-flex justify-content-center align-items-center">
-    <div class="container">
-    <div class="card mx-1 my-2 one" id="body">
-        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:230px" class="picture" />
-        <h3>Name</h3>
-        <button v-on:click="addToCart" class="addbtn">View more</button>
-        </div>
-        </div>
-    <div class="container">
-    <div class="card mx-1 my-2 two" id="body">
-        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:230px" class="picture" />
-        <h3>Name</h3>
-        <button v-on:click="addToCart" class="addbtn">View more</button>
-        </div>
-        </div>
-    <div class="container">
-    <div class="card mx-1 my-2 three" id="body">
-        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:250px" class="picture" />
-        <h3>Name</h3>
-        <button v-on:click="addToCart" class="addbtn">View more</button>
-        </div>
-        </div>
-    <div class="container">
-    <div class="card mx-1 my-2 four" id="body">
-        <img src="https://i.postimg.cc/c41TpVSS/photo-1613536844480-ac5d7b1b6ed1-removebg-preview.png" style="height: 300px; width:250px" class="picture" />
-        <h3>Name</h3>
-        <button v-on:click="addToCart" class="addbtn">View more</button>
-        </div>
-        </div>
+    <div class="card my-4 one" id="body">
+        <img src="https://i.postimg.cc/Jhxm71pC/Bodum-Kenya-French-Press-3-Cup-1024x1024-removebg-preview.png" alt="" class="picture" />
+        <h5>Bodum Kenya French Press</h5>
+        <button class="button"><router-link to="/products"> View Details
+      </router-link></button>
+    </div>
+      <div class="card my-4 two" id="body">
+        <img src="https://i.postimg.cc/yYZjzzcY/Bodum-Brazil-French-Press-8-Cup-Black-1024x1024-removebg-preview.png" alt="" class="picture" />
+        <h5>Bodum Brazil French Press</h5>
+        <button class="button"><router-link to="/products"> View Details
+      </router-link></button>
+    </div>
+    <div class="card my-4 three" id="body">
+        <img src="https://i.postimg.cc/RZQqfxgX/Hario-V60-Iced-Coffee-Maker-Hero-1024x1024-removebg-preview.png" alt="" class="picture" />
+        <h5>Hario V60 Iced Coffee Maker Hero</h5>
+        <button class="button"><router-link to="/products"> View Details
+      </router-link></button>
+    </div>
+    <div class="card my-4 four" id="body">
+        <img src="https://i.postimg.cc/9M4BL3B9/Brew-Tool-Milk-Frothing-Jug-smaller-large-removebg-preview.png" alt="" class="picture" />
+        <h5>Brew Tool Milk Frother</h5>
+
+        <button class="button"><router-link to="/products"> View Details
+      </router-link></button>
+    </div>
 </div>
   </div>
   
@@ -72,6 +90,55 @@ export default {
 </script>
 <style scoped>
 
+/* featured cards */
+img {
+  width: 300px;
+  height: auto;
+  /* border: 1px solid #c59360; */
+  /* box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px; */
+  transition: all .3s ease-in-out;
+}
+
+#body {
+  height: 400px;
+  width:auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.my-4 {
+  background:  #dab99a;
+ border: 1px solid #c59360; 
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+  transition: all .3s ease-in-out;
+  /* border: none; */
+}
+
+.card.my-4:hover{
+  box-shadow: rgba(80, 45, 8, 0.22) 0px 25px 43px;
+  transform: translate3d(0px, -1.5px, 0px);
+}
+
+h5 {
+  color:#c59360;
+  -webkit-text-stroke: 0.5px #462507;
+
+}
+
+button.button{
+  font-size: 16px;
+  font-weight:bold;
+  background-color: #5d340d;
+  color: #E4C2A2;
+  -webkit-text-stroke: 0.5px #995C23;
+  border:none;
+  padding: 10px 10px;
+  width: 115px !important;
+}
+
+/* cards end */
+
 body{
   overflow: hidden;
 }
@@ -87,20 +154,29 @@ img.bg{
 }
 .cont .btn {
   position: absolute;
-  top: 60%;
+  top: 53%;
   right: 16%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-40%, -50%);
   background-color: #5d340d;
   color: #E4C2A2;
-  font-size: 16px;
+  font-size: 17px;
   font-weight:bold;
   -webkit-text-stroke: 0.5px #995C23;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
   border-radius: 0;
 }
+
+.carousel{
+  padding-top: 5%;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .cont .btn:hover {
   background-color: #462507;
 }
@@ -124,6 +200,7 @@ p {
   color: #995C23;
   -webkit-text-stroke: 1px #462507;
   padding-top: 10px;
+  padding-right: 3%;
 }
 
 .column1 {
@@ -138,8 +215,9 @@ p {
   clear: both;
   display: table;
 } */
-.beans{
+img.beans{
   height:400px;
+  width:auto;
   float: right;
 }
 
@@ -168,8 +246,8 @@ p {
 p.About {
   padding-top: 160px;
   text-align: center;
-  align-content: center;
-  justify-content: center;
+  /* align-content: center; */
+  /* justify-content: center; */
   color: #E4C2A2;
   -webkit-text-stroke: 1px #462507;
 }
@@ -189,25 +267,33 @@ h4 {
   padding-bottom: 50px;
 }
 
-#body {
-  height: 400px;
-  width: 300px;
+a {
+  text-decoration: none;
+  color: #E4C2A2;
+  -webkit-text-stroke: 0.5px #995C23;
 }
 
-.card.mx-1.my-2.two {
+
+
+
+.card.my-4.two {
   background-color: #3C6866;
+  margin-right: 2%;
 }
 
-.card.mx-1.my-2.one {
+.card.my-4.one {
   background-color: #462507;
+  margin-right: 2%;
 }
 
-.card.mx-1.my-2.three {
+.card.my-4.three {
   background-color: #E4C2A2;
+  margin-right: 2%;
 }
 
-.card.mx-1.my-2.four {
+.card.my-4.four {
   background-color: #634121;
+  margin-right: 2%;
 }
 
 </style>

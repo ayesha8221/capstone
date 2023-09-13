@@ -2,8 +2,9 @@
     
       <div v-show="userRole === 'Admin'">
       <div class="body" v-if="products">
-      <div class="row table-container">
-                <div class="col-12">
+        
+      <div class=" table-container">
+        <div class="col-12" id="hi">
                   <h1>Products</h1>
                   <button>
                     <router-link to="/admin/add/product"> Add Product </router-link>
@@ -97,5 +98,38 @@
     .tableImg{
         width : 85px;
     }
+
+table{
+  width: 100%;
+  background-color: #E4C2A2;
+}
+
+tbody {
+  text-align: center;
+  background-color: #E4C2A2;
+  
+}
+
+thead {
+  color: #3C6866;
+text-align: center;
+font-family: Inter;
+font-size: 35px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #5a3009;
+}
+
+th, td, tr {
+  /* border: solid black; */
+  border: 2px solid #995C23;
+/* background: #CAAE95; */
+}
+
+td {
+  font-weight: 600;
+  color: #462507;
+}
     
     </style>

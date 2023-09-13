@@ -3,7 +3,7 @@ const db = require("../config/db.js");
   
 // Get All Products
 const getProducts = (result) => {
-    db.query("SELECT prodID, prodName, quantity, amount, category, description, prodUrl FROM Products", (err, results) => {             
+    db.query("SELECT prodID, prodName, quantity, amount, category, description, prodUrl, flavour FROM Products", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -15,7 +15,7 @@ const getProducts = (result) => {
   
 // Get Single Product
 const getProductById = (id, result) => {
-    db.query("SELECT prodID, prodName, quantity, amount, category, description, prodUrl FROM Products WHERE prodID = ?", [id], (err, results) => {             
+    db.query("SELECT prodID, prodName, quantity, amount, category, description, prodUrl, flavour FROM Products WHERE prodID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -41,7 +41,7 @@ const insertProduct = (data, result) => {
 // Update an existing product
 const updateProductByID = (id, data, result) => {
     db.query(
-      "UPDATE Products SET prodName = ?, quantity = ?, amount = ?, category = ?, description = ?, prodURL = ? WHERE prodID = ?",
+      "UPDATE Products SET prodName = ?, quantity = ?, amount = ?, category = ?, description = ?, prodURL = ?, flavour = ? WHERE prodID = ?",
       [
         data.prodName,
         data.quantity,
@@ -49,6 +49,7 @@ const updateProductByID = (id, data, result) => {
         data.category,
         data.description,
         data.prodURL,
+        data.flavour,
         id,
       ],
       (err, results) => {

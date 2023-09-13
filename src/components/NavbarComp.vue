@@ -7,20 +7,31 @@
     <a class="nav-link" aria-current="page" href="/">Home</a>
   <li><router-link to="/about" class="nav-link">About</router-link></li>
   <li><router-link to="/products" class="nav-link">Products</router-link></li>
-  <li><router-link to="/admin" class="nav-link">Admin</router-link></li>
-<!-- <ul class="nav justify-content-end"> -->
-  <li class="justify-content-end ms-auto"> 
-    <router-link class="smol" to="/cart"><img class="cart" src="https://i.postimg.cc/dtWcCPk3/3737372-removebg-preview.png" alt=""></router-link>
-  </li>
-  <li class="nav-item dropdown justify-content-end align-items-center">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img  class="cart" src="https://i.postimg.cc/ZRYBKvW0/3177440-removebg-preview.png" alt=""></a>
-    <ul class="dropdown-menu">
-      <li><button class="smol" @click="logout">Log out</button></li>
+  <li v-show="userRole === 'Admin'" ><router-link to="/admin" class="nav-link">Admin</router-link></li>
       <li><router-link class="smol" to="/login">Login</router-link></li>
       <li><router-link class="smol" to="/register">Register</router-link></li>
-    </ul>
+      <li  class="justify-content-end ms-auto"> 
+    <router-link class="smol" to="/cart"><img class="cart" src="https://i.postimg.cc/dtWcCPk3/3737372-removebg-preview.png" alt=""></router-link>
   </li>
+  <li>
+    <router-link v-if="userData"
+                :to="{ name: 'user', params: { id: userData.userID } }"
+                class="text-decoration-none text-white text-center"
+              >
+              <img  class="profile" :src="userData.userProfile" :alt="userData.firstName" />
+              
+              </router-link>
+  </li>
+  <li>
+          <button @click="logout" class="link"><img src="https://i.postimg.cc/WzwDYRNK/icons8-logout-30.png" alt="">
+          </button>
+        </li>
 </div>
+<!-- <ul class="nav justify-content-end"> -->
+ 
+<!-- </ul> -->
+      
+
 
 <div>
   
@@ -30,9 +41,16 @@
 </template>
 <script>
 export default {
+  props: ["user"],
+  mounted() {
+    this.$store.dispatch("getUsers");
+  },
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    users() {
+      return this.$store.state.users;
     },
     userData() {
       return this.$store.state.userData;
@@ -49,9 +67,6 @@ export default {
   },
 
 }
-
-
-
 
 
 </script>
@@ -126,12 +141,19 @@ a.nav-link {
 .cart {
   height: 40px;
   width: auto;
+  margin-right: 15px;
 }
 
 ul.dropdown.menu {
     height: auto;
     padding-right: 10%;
     font-weight: bold;
+}
+
+img.profile {
+  height: 40px;
+  border-radius: 200px;
+  margin-right: 15px;
 }
 
 @keyframes shake {

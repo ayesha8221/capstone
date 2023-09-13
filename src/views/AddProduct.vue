@@ -30,7 +30,23 @@
                   class="input"
                   v-model="category"
                   type="text"
-                  placeholder="Name"
+                  placeholder="category"
+                  required
+                />
+                <label class="label">Description</label>
+                <input
+                  class="input"
+                  v-model="description"
+                  type="text"
+                  placeholder="product description"
+                  required
+                />
+                <label class="label">Flavour</label>
+                <input
+                  class="input"
+                  v-model="flavour"
+                  type="text"
+                  placeholder="#000000"
                   required
                 />
                 <label class="label">Image</label>
@@ -60,6 +76,8 @@
                     quantity: '',
                     amount: '',
                     category: '',
+                    description:'',
+                    flavour:'',
                     prodUrl: ''
             }
         },
@@ -69,6 +87,8 @@
         prodName: this.prodName,
         quantity: this.quantity,
         amount: this.amount,
+        description: this.description,
+        flavour: this.flavour,
         category: this.category,
         prodUrl: this.prodUrl,
       };
@@ -81,6 +101,8 @@ if (success) {
   this.quantity = '';
   this.amount = '';
   this.category = '';
+  this.description = '';
+  this.flavour = '';
   this.prodUrl = '';
   this.$router.push('/admin');
 } else {

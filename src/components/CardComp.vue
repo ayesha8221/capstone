@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <div class="container">
-    <div class="card my-4" id="body">
+    <div class="card my-4" :style="{ backgroundColor: product.flavour }" id="body">
         <img :src="product.prodUrl" :alt="product.prodName" class="picture" />
         <h5>{{ product.prodName }}</h5>
         <p> R {{ product.amount }}</p>
@@ -28,7 +28,7 @@ img {
 }
 
 .card.my-4 {
-  background:  #dab99a;
+  /* background:  #dab99a; */
  border: 1px solid #c59360; 
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
   transition: all .3s ease-in-out;

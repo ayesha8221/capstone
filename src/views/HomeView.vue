@@ -108,7 +108,7 @@ img {
 }
 
 .card.my-4 {
-  background:  #dab99a;
+  background:  #c46711;
  border: 1px solid #c59360; 
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
   transition: all .3s ease-in-out;

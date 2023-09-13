@@ -19,6 +19,8 @@
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Category</th>
+                        <th>Description</th>
+                        <th>Colour</th>
                         <th>Quantity</th>
                         
                         <th>Edit/Delete</th>
@@ -31,6 +33,8 @@
                         <td>{{ product.prodName }}</td>
                         <td>R {{ product.amount }}</td>
                         <td>{{ product.category }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.flavour }}</td>
                         <td>{{ product.quantity }}</td>
                         
                         <td>

@@ -34,6 +34,22 @@
           :placeholder="product.category"
           required
         />
+        <label class="label">Description</label>
+        <input
+          class="input" 
+          v-model="data.description"
+          type="text"
+          :placeholder="product.description"
+          required
+        />
+        <label class="label">Flavour</label>
+        <input
+          class="input" 
+          v-model="data.flavour"
+          type="text"
+          :placeholder="product.flavour"
+          required
+        />
         <label class="label">Image</label>
         <input
           class="input"
@@ -56,6 +72,8 @@ export default {
         prodName: '',
         quantity: '',
         amount: '',
+        description: '',
+        flavour: '',
         category: '',
         prodUrl: '',
       },
@@ -68,6 +86,8 @@ export default {
         prodName: this.data.prodName,
         quantity: this.data.quantity,
         amount: this.data.amount,
+        description: this.data.description,
+        flavour: this.data.flavour,
         category: this.data.category,
         prodUrl: this.data.prodUrl,
       };

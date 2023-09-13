@@ -1,9 +1,7 @@
 <template>
 
-    <div>
-      {{  }}
-    </div>
-    <div v-if="users">
+    <div class="container-fluid">
+      <div v-if="users">
         <div class="row table">
             <h1>Users</h1>
           </div>
@@ -46,6 +44,8 @@
             </table>
         </div>
     <loading-spinner v-else/>
+    </div>
+    
   </template>
   <script>
   
@@ -78,17 +78,17 @@
 
   table{
   width: 100%;
-  background-color: #995C23 !important;
+  /* background-color: #995C23 !important; */
 }
 
 tbody {
   text-align: center;
-  background-color: #995C23 !important;
+  /* background-color: #995C23 !important; */
 }
 
-thead {
-  background-color: #995C23 !important;
-  color: #3C6866;
+th {
+  /* background-color: #995C23 !important; */
+  color: #3C6866 !important;
 text-align: center;
 font-family: Inter;
 font-size: 35px;
@@ -100,9 +100,10 @@ line-height: normal;
 }
 
 th, td, tr {
+  /* color: #3C6866 !important; */
   /* border: solid black; */
   border: 2px solid #995C23;
-/* background: #CAAE95; */
+  background: #E4C2A2 !important;
 }
 
 td {

@@ -67,6 +67,12 @@ updateUser(state, data) {
   }
 },
 
+//delete user
+deleteUser(state, userId) {
+  // Remove the product with the given ID from the products list.
+  state.users = state.users.filter((user) => user.id !== userId);
+},
+
 
 
 //cart
@@ -229,21 +235,23 @@ async updateUser(context, payload) {
     context.commit("setmessage", "an error occured");
   }
 },
-// async updateUser({ commit }, data) {
-//   try {
-//     const response = await axios.put(`https://capstone-sb96.onrender.com/users/${data.id}`, data);
-//     if (response.status === 200) {
-//       commit('updateProduct', data);
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   } catch (err) {
-//     console.error(err);
-//     return false; 
-//   }
-// },
 
+
+//delete user
+async deleteUser({ commit }, userId) {
+  try {
+    // Make the DELETE request to remove the product.
+    await axios.delete(`https://capstone-sb96.onrender.com/products/${userId}`);
+
+    // Commit the mutation to delete the product from the state.
+    commit('deleteUser', userId);
+
+    return true; // Indicate success.
+  } catch (err) {
+    console.error(err);
+    return false; // Indicate failure.
+  }
+},
     
 // login and register
 

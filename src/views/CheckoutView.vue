@@ -1,6 +1,5 @@
 <template lang="">
     <div>
-        <h1>Thank you for shopping with us!</h1>
         <div class="row">
   <div class="col-75">
     <div class="container">
@@ -112,7 +111,7 @@ methods:{
       try {
         await this.$store.dispatch("clearCart", { userID });
         // Clear the cart and then redirect to the login page
-        this.$router.push("/cart");
+        this.$router.push("/");
       } catch (error) {
         console.error("Error clearing cart:", error);
       }

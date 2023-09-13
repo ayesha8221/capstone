@@ -110,7 +110,7 @@
           this.userPass = "";
           this.userProfile = "";
   
-          this.$router.push("/admin");
+          this.$router.push("/user");
           alert("User has been updated");
         } catch (err) {
           console.error(err);

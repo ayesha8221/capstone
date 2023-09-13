@@ -1,9 +1,22 @@
 <template>
     <div v-if="user" class="product_details" :key="user.userID" :user="user">
            <div class="card mx-auto">
-         <div class="container">
+         <div class="container d-flex justify-content-center align-items-center">
        <div class="card my-2">
            <img class="profile" :src="user.userProfile" :alt="user.firstName" />
+           <div>
+            <button>
+                      <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link>
+                    </button>
+                    <button
+                            type="submit"
+                            class="btn btton"
+                            @click= deleteProduct(product.prodID)
+                            id="delete-row"
+                          >
+                            Delete Account
+                          </button>
+           </div>
            <h3> First Name : {{ user.firstName }}</h3>
            <p> Last Name : {{ user.lastName }}</p>
            <p> Role : {{ user.userRole }}</p>
@@ -29,6 +42,19 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
            }
             
        },
+       methods: {
+        async deleteUser(userId) {
+      const success = await this.$store.dispatch('deleteUser', userId);
+
+      if (success) {
+        // Update the product list in your component if needed.
+        this.$store.dispatch('getUsers'); // You can dispatch this if you need to refresh the product list.
+      } else {
+        alert('Failed to delete user. Please try again.');
+      }
+    },
+
+       },
    
        mounted() {
            this.$store.dispatch("getUser", this.id)
@@ -48,6 +74,9 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
    .card.my-2 {
     text-align: center;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
    }
    
    </style>

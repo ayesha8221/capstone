@@ -1,14 +1,11 @@
 <template>
-    
+    <div class="container-fluid">
       <div v-show="userRole === 'Admin'">
       <div class="body" v-if="products">
         
       <div class=" table-container">
         <div class="col-12" id="hi">
                   <h1>Products</h1>
-                  <button>
-                    <router-link to="/admin/add/product"> Add Product </router-link>
-                  </button>
                 </div>
                 <div class="col">
                   <table class="table is-striped is-bordered mt-2 is-fullwidth array-listsarray-lists text-align-center"  @submit="deleteProduct">
@@ -20,10 +17,11 @@
                         <th>Price</th>
                         <th>Category</th>
                         <th>Description</th>
-                        <th>Colour</th>
+                        <th>Flavour</th>
                         <th>Quantity</th>
                         
                         <th>Edit/Delete</th>
+                        <th>Add</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -51,6 +49,11 @@
                             Delete
                           </button>
                         </td>
+                        <td>
+                          <button>
+                    <router-link to="/admin/add/product"> Add </router-link>
+                  </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -60,6 +63,8 @@
               
             </div>
     
+    </div>
+      
     </template>
     
     <script>
@@ -99,6 +104,10 @@
     </script>
     
     <style scoped>
+
+/* * {
+  background-color: #E4C2A2;
+} */
     .tableImg{
         width : 85px;
     }
@@ -128,7 +137,7 @@ line-height: normal;
 th, td, tr {
   /* border: solid black; */
   border: 2px solid #995C23;
-/* background: #CAAE95; */
+background: #E4C2A2;
 }
 
 td {

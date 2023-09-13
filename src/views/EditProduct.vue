@@ -72,9 +72,9 @@ export default {
         prodName: '',
         quantity: '',
         amount: '',
+        category: '',
         description: '',
         flavour: '',
-        category: '',
         prodUrl: '',
       },
     };
@@ -86,9 +86,9 @@ export default {
         prodName: this.data.prodName,
         quantity: this.data.quantity,
         amount: this.data.amount,
+        category: this.data.category,
         description: this.data.description,
         flavour: this.data.flavour,
-        category: this.data.category,
         prodUrl: this.data.prodUrl,
       };
 

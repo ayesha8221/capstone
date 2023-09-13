@@ -69,7 +69,6 @@ updateUser(state, data) {
 
 //delete user
 deleteUser(state, userId) {
-  // Remove the product with the given ID from the products list.
   state.users = state.users.filter((user) => user.id !== userId);
 },
 

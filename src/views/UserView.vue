@@ -11,7 +11,7 @@
                     <button
                             type="submit"
                             class="btn btton"
-                            @click= deleteProduct(product.prodID)
+                            @click= "deleteUser(user.userID)"
                             id="delete-row"
                           >
                             Delete Account
@@ -39,25 +39,29 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
            },
            id () {
                return this.$route.params.id
-           }
+           },
+           userRole() {
+      return this.$store.state.userRole;
+    },
             
+       },
+       mounted() {
+           this.$store.dispatch("getUser", this.id)
        },
        methods: {
         async deleteUser(userId) {
+            console.log('deleted user', userId)
       const success = await this.$store.dispatch('deleteUser', userId);
 
       if (success) {
+        this.$router.push("/login");
         // Update the product list in your component if needed.
-        this.$store.dispatch('getUsers'); // You can dispatch this if you need to refresh the product list.
+        // this.$store.dispatch('getUsers', userId); // You can dispatch this if you need to refresh the product list.
       } else {
         alert('Failed to delete user. Please try again.');
       }
     },
 
-       },
-   
-       mounted() {
-           this.$store.dispatch("getUser", this.id)
        },
        components: { LoadingSpinner },
        

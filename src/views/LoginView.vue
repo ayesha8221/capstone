@@ -3,7 +3,7 @@
         <div class="container d-flex justify-content-center text-align-center align-items-center" >
 <div class="card">
     <div class="row d-flex justify-content-center text-align-center align-items-center">
-    <div class="col">
+    <div class="col-12 col-md-6">
         
         <h1>Login </h1>
 
@@ -178,6 +178,21 @@ a{
   padding-top: 5%;
   text-decoration: none;
   color: black;
+}
+
+@media screen and (max-width: 320px) {
+  img.login {
+    width: 100% !important;
+    height:auto;
+}
+
+.card {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
 }
 
 </style>

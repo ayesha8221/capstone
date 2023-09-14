@@ -1,50 +1,57 @@
 <template>
 
-    <div class="container-fluid">
-      <div v-if="users">
-        <div class="row table">
-            <h1>Users</h1>
-          </div>
-            <table
-              class="table is-striped is-bordered mt-2 is-fullwidth array-lists"
-            >
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Profile</th>
-                  <th>Name</th>
-                  <th>Surname</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  
-                  <th>Edit/Delete</th>
-                  <th>View Profile</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="user in users" :key="user.userID" class="bord">
-                  <td>{{ user.userID }}</td>
-                 <td><img class="tableImg" :src="user.userProfile" alt="" /></td>
-                  <td>{{ user.firstName }}</td>
-                  <td>{{ user.lastName }}</td>
-                  <td>{{ user.emailAdd }}</td>
-                  <td>{{ user.userRole }}</td>
-                 
-                  <td>
-                    
-                    <button class="edit">
-                      <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link>
-                    </button>
-                  </td>
-                  <td>
-                    <button class="view"> <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
-    <loading-spinner v-else/>
+<div class="container-fluid">
+  <div v-if="users">
+    <div class="row">
+      <div class="col-12">
+        <h1>Users</h1>
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+
+        <!-- Table scrollable responsiveness -->
+        <div class="table-responsive">
+          <table class="table is-striped is-bordered mt-2 is-fullwidth array-lists">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Profile</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Edit/Delete</th>
+                <th>View Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="user in users" :key="user.userID" class="bord">
+                <td>{{ user.userID }}</td>
+                <td><img class="tableImg" :src="user.userProfile" alt="" /></td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.emailAdd }}</td>
+                <td>{{ user.userRole }}</td>
+                <td>
+                  <button class="edit">
+                    <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link>
+                  </button>
+                </td>
+                <td>
+                  <button class="view">
+                    <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <loading-spinner v-else />
+</div>
     
   </template>
   <script>

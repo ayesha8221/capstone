@@ -50,15 +50,10 @@
         <button class="button"><router-link to="/products"> View Details
       </router-link></button>
     </div>
+
       <div class="card my-4 two" id="body">
         <img src="https://i.postimg.cc/yYZjzzcY/Bodum-Brazil-French-Press-8-Cup-Black-1024x1024-removebg-preview.png" alt="" class="picture" />
         <h5>Bodum Brazil French Press</h5>
-        <button class="button"><router-link to="/products"> View Details
-      </router-link></button>
-    </div>
-    <div class="card my-4 three" id="body">
-        <img src="https://i.postimg.cc/RZQqfxgX/Hario-V60-Iced-Coffee-Maker-Hero-1024x1024-removebg-preview.png" alt="" class="picture" />
-        <h5>Hario V60 Iced Coffee <br> Maker Hero</h5>
         <button class="button"><router-link to="/products"> View Details
       </router-link></button>
     </div>
@@ -100,8 +95,8 @@ img {
 }
 
 #body {
-  height: 400px;
-  width:auto;
+  height: 450px;
+  width:380px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -123,6 +118,8 @@ img {
 h5 {
   color:#c59360;
   -webkit-text-stroke: 0.5px #462507;
+  font-size: 30px;
+  padding-bottom: 10px;
 
 }
 
@@ -176,7 +173,7 @@ img.bg{
 }
 
 .carousel{
-  padding-top: 5%;
+  padding-top: 2%;
   width: 70%;
   justify-content: center;
   align-items: center;
@@ -204,10 +201,10 @@ h1 {
 
 p {
   font-size: 28px;
-    color: #E4C2A2;
-  -webkit-text-stroke: 1px #462507;
-  padding-top: 10px;
-  padding-right: 3%;
+    color: #d6a271;
+  -webkit-text-stroke: 0.8px #462507;
+  /* padding-top: 10px; */
+  padding: 3%;
 }
 
 .column1 {
@@ -261,9 +258,9 @@ p.About {
 
 .featured {
   background-color: #995C23;
-  height: 650px;
+  height: 680px;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
 h4 {
@@ -289,11 +286,6 @@ a {
 }
 
 .card.my-4.one {
-  background-color: #462507;
-  margin-right: 2%;
-}
-
-.card.my-4.three {
   background-color: #E4C2A2;
   margin-right: 2%;
 }
@@ -306,13 +298,13 @@ a {
 @media screen and (max-width: 1024px) {
 
   .conta .bttn {
-    top: 135% !important;
-    right: 4%;
+    top: 125% !important;
+    right: 3%;
     font-size: 15px;
   }
 
   .cont .btn {
-    top: 70%;
+    top: 65%;
     padding: 5px 10px;
     font-size: 15px;
   }
@@ -335,7 +327,7 @@ h1 {
 .container-fluid {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
+    justify-content: center;
     /* align-items: flex-start; */
   }
 
@@ -343,13 +335,27 @@ h1 {
     width: calc(50% - 20px); /* Two cards per row with some margin */
   }
 
-  .featured {
-    height: 1080px;
+  .carousel {
+    width: 70%;
   }
 
-  @media screen and (max-width: 768px) {
+  .featured {
+    height: 1160px;
+  }
+
+  p{
+    font-size: 21px !important;
+  }
+
+h4 {
+  padding: 0 0 30px 0;
+}
+
+}
+
+  @media screen and (max-width: 768px)  {
     .conta .bttn {
-    top: 115% !important;
+    top: 100% !important;
     right: 4%;
     font-size: 15px;
     padding: 6px 6px 6px 6px
@@ -357,6 +363,9 @@ h1 {
 
   .carousel {
     width: 70%;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
   }
 
   .cont .btn {
@@ -366,22 +375,30 @@ h1 {
   }
 
   img.beans{
-  height:250px;
+  height:220px;
   width:auto;
   float: right;
 }
 .column1 {
   /* float: right; */
-  height: 250px;
+  height: 220px;
   background-color: #3C6866;
 }
 
 h1 {
-  font-size: 45px;
+  font-size: 40px;
+  top: 3%;
+}
+
+p{
+  font-size: 14px !important;
+  color: #d6a271;
+  -webkit-text-stroke: 0.6px #462507;
+  margin-top: 2%;
 }
 .featured {
     height: 1000px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
   }
 
   h4 {
@@ -414,12 +431,27 @@ button.button{
   color: #E4C2A2;
   -webkit-text-stroke: 0.5px #995C23;
   border:none;
-  padding: 5px 5px;
+  padding: 5px 7px;
   /* width: 115px !important; */
 }
 
+.cont .content {
+  top: 20%;
+}
 
-  }
+.carousel {
+  width: 70%;
+}
+
+#body{
+  width: 320px;
+}
+
+h5{
+  font-size: 25px;
+}
+
+}
 
 
 
@@ -428,14 +460,5 @@ button.button{
   width:auto;
 } */
 
-
-  .carousel {
-    width: 65%;
-  }
-
-  p {
-    font-size: 16px
-  }
-}
 
 </style>

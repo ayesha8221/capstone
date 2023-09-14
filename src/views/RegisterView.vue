@@ -3,7 +3,7 @@
         <div class="container d-flex justify-content-center text-align-center align-items-center" >
 <div class="card">
     <div class="row d-flex justify-content-center text-align-center align-items-center">
-    <div class="col">
+    <div class="col-12 col-md-6">
         
         <h1> Register </h1>
 
@@ -175,6 +175,23 @@ font-size: 20px;
 font-weight: 600;
 line-height: normal;
 -webkit-text-stroke: 0.3px #995C23;
+}
+
+@media screen and (max-width: 320px) {
+  img.login {
+    width: 100% !important;
+    height:auto;
+}
+
+
+
+.card {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
 }
 
 

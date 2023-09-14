@@ -52,13 +52,14 @@
   </div>
   <div
     v-if="filteredProducts.length > 0"
-    class="products_container media-container row row-cols-4 m-0"
+    class="products_container media-container row row m-0"
     id="products"
   >
     <CardComp
       v-for="product of filteredProducts"
       :key="product.prodID"
       :product="product"
+      class="col-12 col-md-5 col-lg-4" 
     />
      
   </div>
@@ -177,5 +178,66 @@ a {
   text-align: center;
 }
 
+@media screen and (max-width: 320px) {
+
+
+  .col-md-5 {
+    width: 100% !important;
+  }
+
+
+input.m-3 {
+  width: 80%;
+  margin: 5 0 5 0 !important;
+}
+
+#sort-select{
+  width: 100%;
+  display:flex;
+  justify-content: center !important;
+  align-content: center !important;
+  text-align: center !important;
+}
+
+.container.button.filter-btn {
+  font-size: 26px;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+}
+
+@media screen and (max-width: 768px) {
+
+  select#sort-select {
+    display: flex;
+    justify-content: center  !important;
+    align-content: center !important;
+  text-align: center !important;
+  }
+
+  button.filter-btn {
+  font-size: 23px;
+}
+
+.col-md-5 {
+    width: 50%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; */
+  }
+
+
+}
+
+@media screen and (max-width: 1024px) {
+  select#sort-select {
+    display: flex;
+    justify-content: center  !important;
+    align-content: center !important;
+  text-align: center !important;
+  }
+}
     
 </style>

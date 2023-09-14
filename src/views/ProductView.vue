@@ -97,4 +97,13 @@ mix-blend-mode: hard-light;
   background:#613914;
 }
 
+@media screen and (max-width: 320px) {
+
+  img{
+        width: 100%;
+
+    }
+
+}
+
 </style>

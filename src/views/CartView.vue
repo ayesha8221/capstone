@@ -169,5 +169,28 @@ a{
   color: #E4C2A2 ;
 }
 
+@media screen and (max-width: 320px) {
+
+table{
+  width: 100% !important;
+  border-collapse: collapse;
+}
+
+ td {
+  padding: 8px; /* Adjust cell padding as needed */
+  text-align: left; /* Left-align table content */
+  font-size: 10px !important;
+}
+th {
+  font-size: 20px !important;
+}
+.tableImg {
+  width: 38px;
+}
+
+.delete {
+  font-size: 10px;
+}
+}
 
 </style>

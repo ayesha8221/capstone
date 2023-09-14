@@ -192,5 +192,34 @@ margin-right: 10px;
 }
 
 }
+
+@media screen and (max-width: 320px) {
+  .nav {
+    /* margin: 100px; */
+    padding: 0 0 100px 0;
+    display: flex;
+    justify-content: center !important;
+  }
+  .nav-link {
+    font-size: 16px; /* Adjust font size for smaller screens */
+    margin-right: 5px;
+  }
+  .nav img {
+    width: 50px; /* Adjust logo size for smaller screens */
+  }
+  /* You can further adjust styles as needed */
+
+  .cart, .logout {
+    height: auto;
+    width: 30px !important;
+    justify-content: center !important;
+  }
+
+  .profile{
+    height: auto;
+    width: 40px !important;
+    justify-content: center !important;
+  }
+}
     
 </style>

@@ -41,7 +41,7 @@ img {
 }
 
 #body {
-  height: 450px;
+  height: 500px;
   width:auto;
   text-align: center;
   justify-content: center;
@@ -69,7 +69,7 @@ border: none;
 h5 {
   /* margin-left: 9%; */
   /* border: none; */
-  font-size: 20px;
+  font-size: 30px;
   color: #a46427;
 text-align: center;
 /* font-family: Inter; */
@@ -77,7 +77,7 @@ text-align: center;
 /* font-style: italic; */
 font-weight: 700;
 line-height: normal;
--webkit-text-stroke: 0.7px #462507;
+-webkit-text-stroke: 1px #462507;
 cursor: pointer;
 /* padding-bottom: 2%; */
 }
@@ -85,7 +85,7 @@ cursor: pointer;
 p {
   color: #462507;
 text-align: center;
-font-size: 20px;
+font-size: 25px;
 -webkit-text-stroke: 0.4px #462507;
 }
 
@@ -93,6 +93,22 @@ a{
   text-decoration: none;
   color: #E4C2A2;
   -webkit-text-stroke: 0.7px #995C23;
+}
+
+@media screen and (max-width: 320px) and (max-height: 577px) {
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* align-items: flex-start; */
+  }
+  #body {
+                width: 100% !important; /* Make the card take up the full screen width */
+                margin: 0; /* Remove margins for full-width */
+
+}
+
 }
     
 </style>

@@ -6,7 +6,7 @@
         <div class="row justify-content-center align-items-center">
           
           
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <img class="profile" :src="user.userProfile" :alt="user.firstName" />
          
     </div>
@@ -139,6 +139,31 @@ padding-bottom: 0.5em;
 button {
   border: none !important;
   background: none;
+}
+
+@media screen and (max-width: 320px) {
+img.profile {
+  width: 100% !important;
+  height:auto;
+}
+
+.card {
+  width: 100% !important;
+  height:auto !important;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+p {
+  font-size: 15px;
+}
+
+h3 {
+  font-size: 22px;
+}
+  
 }
 
 

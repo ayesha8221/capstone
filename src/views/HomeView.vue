@@ -58,7 +58,7 @@
     </div>
     <div class="card my-4 three" id="body">
         <img src="https://i.postimg.cc/RZQqfxgX/Hario-V60-Iced-Coffee-Maker-Hero-1024x1024-removebg-preview.png" alt="" class="picture" />
-        <h5>Hario V60 Iced Coffee Maker Hero</h5>
+        <h5>Hario V60 Iced Coffee <br> Maker Hero</h5>
         <button class="button"><router-link to="/products"> View Details
       </router-link></button>
     </div>
@@ -137,6 +137,12 @@ button.button{
   width: 115px !important;
 }
 
+button.button:hover {
+  background:#613914;
+  color: #E4C2A2 ;
+}
+
+
 /* cards end */
 
 body{
@@ -193,11 +199,12 @@ img.bg{
 
 h1 {
   font-size: 75px;
+  top: 100%;
 }
 
 p {
   font-size: 28px;
-  color: #995C23;
+    color: #E4C2A2;
   -webkit-text-stroke: 1px #462507;
   padding-top: 10px;
   padding-right: 3%;
@@ -294,6 +301,141 @@ a {
 .card.my-4.four {
   background-color: #634121;
   margin-right: 2%;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .conta .bttn {
+    top: 135% !important;
+    right: 4%;
+    font-size: 15px;
+  }
+
+  .cont .btn {
+    top: 70%;
+    padding: 5px 10px;
+    font-size: 15px;
+  }
+
+  img.beans{
+  height:300px;
+  width:auto;
+  float: right;
+}
+.column1 {
+  /* float: right; */
+  height: 300px;
+  background-color: #3C6866;
+}
+
+h1 {
+  font-size: 55px;
+}
+
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* align-items: flex-start; */
+  }
+
+  .card {
+    width: calc(50% - 20px); /* Two cards per row with some margin */
+  }
+
+  .featured {
+    height: 1080px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .conta .bttn {
+    top: 115% !important;
+    right: 4%;
+    font-size: 15px;
+    padding: 6px 6px 6px 6px
+  }
+
+  .carousel {
+    width: 70%;
+  }
+
+  .cont .btn {
+    top: 70%;
+    padding: 8px 8px;
+    font-size: 12px;
+  }
+
+  img.beans{
+  height:250px;
+  width:auto;
+  float: right;
+}
+.column1 {
+  /* float: right; */
+  height: 250px;
+  background-color: #3C6866;
+}
+
+h1 {
+  font-size: 45px;
+}
+.featured {
+    height: 1000px;
+    padding-bottom: 30px;
+  }
+
+  h4 {
+    font-size: 40px;
+    padding: 2% !important;
+  }
+
+  #body {
+  height: 380px;
+  width:auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 250px;
+  height: auto;
+  /* border: 1px solid #c59360; */
+  /* box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px; */
+  transition: all .3s ease-in-out;
+}
+
+
+
+button.button{
+  font-size: 16px;
+  font-weight:bold;
+  background-color: #5d340d;
+  color: #E4C2A2;
+  -webkit-text-stroke: 0.5px #995C23;
+  border:none;
+  padding: 5px 5px;
+  /* width: 115px !important; */
+}
+
+
+  }
+
+
+
+/* img.picture {
+  height: 200px;
+  width:auto;
+} */
+
+
+  .carousel {
+    width: 65%;
+  }
+
+  p {
+    font-size: 16px
+  }
 }
 
 </style>

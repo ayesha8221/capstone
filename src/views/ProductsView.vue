@@ -11,7 +11,7 @@
   <div class="container">
     <div class="filter-btns">
       <select id="sort-select" v-model="selectedSort">
-        <option value="options">Sort options</option>
+        <option value="options">Sort Options</option>
         <option value="alphabetical">Sort Alphabetically</option>
         <option value="price-high">Sort by Price (High to Low)</option>
         <option value="price-low">Sort by Price (Low to High)</option>
@@ -129,6 +129,7 @@ mounted() {
 
 .search {
   text-align: center;
+  /* width: 200px; */
 }
 
 
@@ -164,6 +165,17 @@ padding-bottom: 2%;
   text-decoration: underline #77481c 13%;
 }
 
+a {
+  color: #E4C2A2;
+}
+
+#sort-select{
+  width: 250px;
+  border-color:  #804711 !important;
+  color: #462507;
+  font-weight: 700;
+  text-align: center;
+}
 
     
 </style>

@@ -110,6 +110,7 @@ a.nav-link {
 
 }
 
+
 .nav-link {
     color: #995C23;
     font-size: 25px;
@@ -174,5 +175,22 @@ margin-right: 10px;
   40%, 60% {
     transform: translate3d(2px, 0, 0);
 }}
+
+@media screen and (max-width: 768px) {
+  .nav-link {
+    color: #995C23;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-text-stroke: 0.2px #E4C2A2;
+    margin-right: 25px;
+}
+
+.cart {
+  height: 30px;
+  width: auto;
+  margin-right: 15px;
+}
+
+}
     
 </style>

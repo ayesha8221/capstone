@@ -2,11 +2,21 @@
     <div v-if="user" class="product_details" :key="user.userID" :user="user">
            <div class="card mx-auto">
          <div class="container d-flex justify-content-center align-items-center">
-       <div class="card my-2">
-           <img class="profile" :src="user.userProfile" :alt="user.firstName" />
-           <div>
+       <div class="card my-2 row">
+        <div class="row justify-content-center align-items-center">
+          
+          
+    <div class="col-6">
+      <img class="profile" :src="user.userProfile" :alt="user.firstName" />
+         
+    </div>
+    <div class="col-4"><h1>Profile</h1>
+      
+      <h3>First Name:</h3><p>{{ user.firstName }} {{ user.lastName }}</p>
+          <h3>Role:</h3><p>{{ user.userRole }}</p>
+            <h3> Email:</h3> <p>{{ user.emailAdd }}</p>
             <button>
-                      <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link>
+                      <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"><img class="edit-icon" src="https://i.postimg.cc/T2Z8Qtg6/icons8-edit-50-removebg-preview.png" alt=""></router-link>
                     </button>
                     <button
                             type="submit"
@@ -14,13 +24,21 @@
                             @click= "deleteUser(user.userID)"
                             id="delete-row"
                           >
-                            Delete Account
+                            <img class="edit-icon" src="https://i.postimg.cc/kMtSk56b/icons8-delete-30.png" alt="">
                           </button>
+    </div>
+  </div>
+        <!-- <div class="container">
+          
+                          <div class="col-6">
+           
            </div>
-           <h3> First Name : {{ user.firstName }}</h3>
-           <p> Last Name : {{ user.lastName }}</p>
-           <p> Role : {{ user.userRole }}</p>
-           <p> Email : {{ user.emailAdd }}</p>
+        </div> -->
+           
+           <div>
+           </div>
+           
+           
        </div>
      </div>
            </div>
@@ -70,17 +88,58 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
    <style scoped>
 *{
     overflow:hidden;
+    background-color: #E4C2A2;
 }
    .profile {
-    height: 300px;
-    width:fit-content;
+     height: 350px;
+    width:auto;
+    border-radius: 10px;
    }
 
    .card.my-2 {
     text-align: center;
-    width: 400px;
+    height: 500px;
+    width: 900px;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(80, 45, 8, 0.22) 0px 25px 43px;
+    border: 1px solid #c59360; 
    }
    
+   .edit-icon {
+    height: 27px;
+   }
+
+   /* .edit-icon:hover {
+    
+   } */
+
+   h1 {
+    color: #3C6866 !important;
+text-align: center;
+font-family: Inter;
+font-size: 2.9rem;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #5a3009;
+padding-bottom: 0.5em;
+   }
+
+   p {
+    font-size: 18px;
+    font-weight: 600;
+  color: #462507;
+   }
+
+   h3 {
+    color: #462507;
+   }
+   
+button {
+  border: none !important;
+  background: none;
+}
+
+
    </style>

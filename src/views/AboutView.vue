@@ -2,7 +2,6 @@
   
   <div class="about">
     <div class="first" >
-      <img class="border" src="https://i.postimg.cc/Bv3f5cBh/ed379674-8a22-4517-9c15-d6966228fc6f-removebg-preview.png" alt="">
     <div  id="margin" class="container one d-flex justify-content-center align-content-center">
   <div class="row">
     <div class="col-6"><img class="beans" src="https://i.postimg.cc/76ByTFD3/photo-1597816792530-f6d57bd2bf9e.jpg" style="height:500px;" alt="ourBeans"></div>
@@ -10,7 +9,8 @@
 
 <p>By sourcing our beans locally, we not only support the livelihoods of hardworking farmers in our community but also reduce our carbon footprint, contributing to a healthier planet. Our commitment to sustainability extends beyond just our products; it's a core principle that guides every aspect of our business.</p></div>
   </div>
-</div>
+</div> 
+<img class="border" src="https://i.postimg.cc/Bv3f5cBh/ed379674-8a22-4517-9c15-d6966228fc6f-removebg-preview.png" alt="">
     </div>
     
     <div class="container one d-flex justify-content-center align-content-center">
@@ -49,8 +49,12 @@ export default {
 }
 .container.one, .container.two.d-flex.justify-content-center.align-content-center {
   padding-top: 2%;
-  padding-bottom: 7%;
+  padding-bottom: 5%;
   text-align: center;
+}
+
+.beans, .grow-up {
+  margin-top: 4em;
 }
 
 .beans {
@@ -63,23 +67,19 @@ export default {
   border: 8px solid #462507;
 }
 
-.margin {
-  margin-top: 2%
-}
-
 .first {
   display: flex;
 }
 
 .border {
-  float: right;
-  border:#E4C2A2;
-  height: 30%;
+  /* float: right; */
+  border: none !important;
+  height: 75%;
   width: auto;
 }
 
 .container.two.d-flex.justify-content-center.align-content-center {
-  padding-bottom: 7%;
+  padding-bottom: 2em;
 }
 
 .grow, .grow.up {
@@ -103,7 +103,7 @@ line-height: normal;
 }
 
 .grow.up {
-  padding-top: 12%;
+  padding-top: 4em;
 }
 
 

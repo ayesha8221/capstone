@@ -32,12 +32,12 @@
                  
                   <td>
                     
-                    <button>
+                    <button class="edit">
                       <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link>
                     </button>
                   </td>
                   <td>
-                    <button> <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link></button>
+                    <button class="view"> <router-link :to="{ name: 'user', params: { id: user.userID } }"> View </router-link></button>
                   </td>
                 </tr>
               </tbody>
@@ -69,7 +69,7 @@
       components: { LoadingSpinner},
   }
   </script>
-  <style>
+  <style scoped>
   
   .tableImg {
       width: 120px;
@@ -110,5 +110,38 @@ td {
   font-weight: 600;
   color: #462507;
 }
+
+h1 {
+  color: #995C23;
+    font-size: 2.2rem;
+    font-weight: bold;
+    -webkit-text-stroke: 1px #422306;
+    text-align: center;
+}
+
+.edit:hover, .view:hover {
+  background:#613914;
+  color: #E4C2A2 ;
+}
+
+.edit, .view {
+  background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+border: none;
+padding: 3px 3px 3px 3px;
+}
+
+a {
+  text-decoration: none;
+  color: #E4C2A2;
+  -webkit-text-stroke: 0.5px #995C23;
+}
+
   
   </style>

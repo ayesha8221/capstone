@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="container">
       <div class="container flex-container" v-if="user">
+        <br>
         <label for="firstName">Name</label>
+        <br>
         <input
           type="text"
           autocomplete="off"
@@ -11,7 +13,9 @@
           v-model="user.firstName"
           placeholder="name"
         />
+        <br>
         <label for="lastName">Surname</label>
+        <br>
         <input
           type="text"
           autocomplete="off"
@@ -21,8 +25,9 @@
           v-model="user.lastName"
           placeholder="surname"
         />
-  
+        <br>
         <label for="userRole">Role</label>
+        <br>
         <input
           type="text"
           autocomplete="off"
@@ -32,7 +37,9 @@
           v-model="user.userRole"
           placeholder="role"
         />
+        <br>
         <label for="emailAdd">Email Address</label>
+        <br>
         <input
           type="text"
           autocomplete="off"
@@ -42,8 +49,9 @@
           v-model="user.emailAdd"
           placeholder="email"
         />
-  
+        <br>
         <label for="userPass">Password</label>
+        <br>
         <input
           type="text"
           autocomplete="off"
@@ -53,7 +61,9 @@
           v-model="user.userPass"
           placeholder="password"
         />
+        <br>
         <label for="userProfile">Profile URL</label>
+        <br>
         <input
           type="text"
           autocomplete="off"
@@ -63,8 +73,8 @@
           v-model="user.userProfile"
           placeholder="profile"
         />
-  
-        <button @click="updateUser" class="btn-submit">Submit</button>
+        <br>
+        <button @click="updateUser" class="btn-submit m-3">Submit</button>
       </div>
       <h1 v-else class="text-white">Error</h1>
     </div>
@@ -78,8 +88,6 @@
       return {
         firstName: "",
         lastName: "",
-        userAge: "",
-        gender: "",
         userRole: "",
         emailAdd: "",
         userPass: "",
@@ -93,8 +101,6 @@
             userID: this.$route.params.id,
             firstName: this.user.firstName,
             lastName: this.user.lastName,
-            userAge: this.user.userAge,
-            gender: this.user.gender,
             userRole: this.user.userRole,
             emailAdd: this.user.emailAdd,
             userPass: this.user.userPass,
@@ -103,8 +109,6 @@
           await this.$store.dispatch("updateUser", payload);
           this.firstName = "";
           this.lastName = "";
-          this.userAge = "";
-          this.gender = "";
           this.userRole = "";
           this.emailAdd = "";
           this.userPass = "";
@@ -131,5 +135,55 @@
   };
   </script>
 
-<style>
+<style scoped>
+
+.container {
+    text-align: center;
+   }
+
+   button {
+    background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+border: none;
+padding: 3px 3px 3px 3px;
+width: 80px;
+   }
+
+   button:hover {
+  background:#613914;
+  color: #E4C2A2 ;
+}
+
+   input{
+    width: 80%;
+    margin-bottom: 30px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #995C23;
+    background-color: rgb(249, 222, 198);
+   }
+
+   label {
+    color: #3C6866 !important;
+text-align: center;
+font-family: Inter;
+font-size: 25px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #5a3009;
+margin-top: 1em;
+padding-bottom: 0.3em;
+   }
+
+   
+
+    
+
 </style>

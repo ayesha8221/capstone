@@ -37,12 +37,11 @@
                         
                         <td>
                           
-                          <button>
+                          <button class="edit">
                       <router-link :to="{ name: 'admin edit product', params: { id : product.prodID } }"> Edit </router-link>
-                      </button>
-                          <button
+                      </button >
+                          <button class="remove"
                             type="submit"
-                            class="btn btton"
                             @click= deleteProduct(product.prodID)
                             id="delete-row"
                           >
@@ -50,7 +49,7 @@
                           </button>
                         </td>
                         <td>
-                          <button>
+                          <button class="add">
                     <router-link to="/admin/add/product"> Add </router-link>
                   </button>
                         </td>
@@ -143,6 +142,43 @@ background: #E4C2A2;
 td {
   font-weight: 600;
   color: #462507;
+}
+
+.add:hover, .edit:hover, .remove:hover {
+  background:#613914;
+  color: #E4C2A2 ;
+}
+
+.add, .edit, .remove {
+  background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+border: none;
+padding: 3px 3px 3px 3px;
+
+}
+
+a {
+  text-decoration: none;
+  color: #E4C2A2;
+  -webkit-text-stroke: 0.5px #995C23;
+}
+
+.edit {
+  margin-right: 0.5em;
+}
+
+h1 {
+  color: #995C23;
+    font-size: 2.2rem;
+    font-weight: bold;
+    -webkit-text-stroke: 1px #422306;
+    text-align: center;
 }
     
     </style>

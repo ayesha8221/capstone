@@ -1,7 +1,8 @@
 <template lang="">
-    <div>
+    <div class="container">
       <div>
         <label class="label">Product Name</label>
+        <br>
                 <input
                   class="input"
                   v-model="prodName"
@@ -9,7 +10,9 @@
                   placeholder="Product Name"
                   required
                 />
+                <br>
                 <label class="label">Quantity</label>
+                <br>
                 <input
                   class="input"
                   v-model="quantity"
@@ -17,7 +20,9 @@
                   placeholder="quantity"
                   required
                 />
+                <br>
                 <label class="label">Price</label>
+                <br>
                 <input
                   class="input"
                   v-model="amount"
@@ -25,7 +30,9 @@
                   placeholder="R"
                   required
                 />
+                <br>
                 <label class="label">Category</label>
+                <br>
                 <input
                   class="input"
                   v-model="category"
@@ -33,7 +40,9 @@
                   placeholder="category"
                   required
                 />
+                <br>
                 <label class="label">Description</label>
+                <br>
                 <input
                   class="input"
                   v-model="description"
@@ -41,7 +50,9 @@
                   placeholder="product description"
                   required
                 />
+                <br>
                 <label class="label">Flavour</label>
+                <br>
                 <input
                   class="input"
                   v-model="flavour"
@@ -49,7 +60,9 @@
                   placeholder="#000000"
                   required
                 />
+                <br>
                 <label class="label">Image</label>
+                <br>
                 <input
                   class="input"
                   v-model="prodUrl"
@@ -57,8 +70,9 @@
                   placeholder="http://"
                   required
                 />
+                <br>
                 <button
-                  class="btn btn-success mt-3"
+                  class=" m-3"
                   @click="addProduct"
                 >
                   Add
@@ -113,6 +127,52 @@ if (success) {
     };
     
     </script>
-    <style lang="">
+    <style scoped>
+
+   .container {
+    text-align: center;
+   }
+
+   button {
+    background-color: #462507;
+  color: #E4C2A2;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+/* font-style: italic; */
+line-height: normal;
+-webkit-text-stroke: 0.5px #995C23;
+border: none;
+padding: 3px 3px 3px 3px;
+width: 80px;
+   }
+
+   button:hover {
+  background:#613914;
+  color: #E4C2A2 ;
+}
+
+
+   input{
+    width: 80%;
+    margin-bottom: 30px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #995C23;
+    background-color: rgb(249, 222, 198);
+   }
+
+   label {
+    color: #3C6866 !important;
+text-align: center;
+font-family: Inter;
+font-size: 25px;
+/* font-style: italic; */
+font-weight: 600;
+line-height: normal;
+-webkit-text-stroke: 1px #5a3009;
+margin-top: 1em;
+padding-bottom: 0.3em;
+   }
     
     </style>

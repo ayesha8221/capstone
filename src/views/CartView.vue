@@ -157,4 +157,17 @@ border: none;
 padding: 3px 3px 3px 3px;
 }
 
+a{
+  text-decoration: none;
+  background-color: #462507; 
+  color: #E4C2A2;
+  -webkit-text-stroke: 0.5px #995C23;
+}
+
+.delete:hover, .checkout:hover {
+  background:#613914 !important;
+  color: #E4C2A2 ;
+}
+
+
 </style>

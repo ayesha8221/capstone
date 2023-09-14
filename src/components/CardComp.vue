@@ -44,6 +44,8 @@ img {
   height: 450px;
   width:auto;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
@@ -61,28 +63,36 @@ border: none;
 
 .button:hover {
   background:#613914;
+  color: #E4C2A2 ;
 }
 
 h5 {
-  color:  #3C6866;
+  /* margin-left: 9%; */
+  /* border: none; */
+  font-size: 20px;
+  color: #a46427;
 text-align: center;
 /* font-family: Inter; */
-font-size: 20px;
+/* font-size: 45px; */
 /* font-style: italic; */
-font-weight: 880;
-/* line-height: normal; */
-/* -webkit-text-stroke: 2px; */
-text-decoration:none;
+font-weight: 700;
+line-height: normal;
+-webkit-text-stroke: 0.7px #462507;
+cursor: pointer;
+/* padding-bottom: 2%; */
 }
 
 p {
-  color:  #3C6866;
+  color: #462507;
 text-align: center;
 font-size: 20px;
+-webkit-text-stroke: 0.4px #462507;
 }
 
 a{
   text-decoration: none;
+  color: #E4C2A2;
+  -webkit-text-stroke: 0.7px #995C23;
 }
     
 </style>

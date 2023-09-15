@@ -1,5 +1,5 @@
 const { router } = require("json-server");
-const { getUsers, getUserByID, insertUser, deleteUserByID, updateUserByID, getCart} =require("../models/userModels.js")
+const { getUsers, getUserByID, insertUser ,checkEmailExists , deleteUserByID, updateUserByID, getCart} =require("../models/userModels.js")
 // const {bcrypt} = require('bcrypt');
 const bcrypt = require('bcrypt')
 const {createToken} = require('../middleware/AuthenticateUser.js')

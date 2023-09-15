@@ -53,7 +53,7 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
        // props: ["id"],
        computed: {
            user() {
-               return this.$store.state.user
+               return this.$store.state.userData
            },
            id () {
                return this.$route.params.id
@@ -74,7 +74,7 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
       if (success) {
         this.$router.push("/login");
         // Update the product list in your component if needed.
-        // this.$store.dispatch('getUsers', userId); // You can dispatch this if you need to refresh the product list.
+        this.$store.dispatch('getUser', userId); // You can dispatch this if you need to refresh the product list.
       } else {
         alert('Failed to delete user. Please try again.');
       }

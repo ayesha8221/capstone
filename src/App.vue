@@ -29,8 +29,8 @@ export default {
 
 
 <style>
-.example::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar {
+     display: none;
 }
 #app{
   background-color: #E4C2A2;

@@ -240,7 +240,7 @@ async updateUser(context, payload) {
 async deleteUser({ commit }, userId) {
   try {
     // Make the DELETE request to remove the product.
-    await axios.delete(`https://capstone-sb96.onrender.com/products/${userId}`);
+    await axios.delete(`https://capstone-sb96.onrender.com/users/${userId}`);
 
     // Commit the mutation to delete the product from the state.
     commit('deleteUser', userId);

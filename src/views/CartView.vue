@@ -45,52 +45,57 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
-    Name: 'setCart',
-    computed: {
-      getCart() {
-        // console.log(this.$store.state.cart.cartID);
-        return this.$store.state.cart
-      },
-      user(){
-        console.log(this.$store.state.userData.userID)
-        return this.$store.state.userData
-      },
-      cartTotalPrice() {
+  name: 'setCart',
+  computed: {
+    getCart() {
+      return this.$store.state.cart;
+    },
+    user() {
+      return this.$store.state.userData;
+    },
+    cartTotalPrice() {
       return this.$store.getters.cartTotalPrice;
     },
-    
-    },
-    
-    mounted() {
-      this.$store.dispatch('getCart', this.user.userID)
-    },
-    methods: {
-
-    //   async checkout() {
-    //   const userID = this.user.userID;
-
-    //   try {
-    //     await this.$store.dispatch("clearCart", { userID });
-    //     // Clear the cart and then redirect to the login page
-    //     this.$router.push(`users/${userID}/checkout`);
-    //   } catch (error) {
-    //     console.error("Error clearing cart:", error);
-    //   }
-    // },
+  },
+  mounted() {
+    this.$store.dispatch('getCart', this.user.userID);
+  },
+  methods: {
     removeFromCart(cartID) {
-    const userID = this.user.userID;
-    
-    this.$store.dispatch('removeFromCart', { userID, cartID })
-      .then(() => {
-        // Optional: Perform any additional actions after successful removal
-      })
-      .catch((error) => {
-        console.error('Error removing item from cart:', error);
+      const userID = this.user.userID;
+
+      this.$store.dispatch('removeFromCart', { userID, cartID })
+        .then(() => {
+          this.showSuccessAlert();
+          // Optional: Perform any additional actions after successful removal
+        })
+        .catch((error) => {
+          console.error('Error removing item from cart:', error);
+          this.showErrorAlert();
+        });
+    },
+    showSuccessAlert() {
+      Swal.fire({
+        icon: 'success',
+        title: 'Item removed from cart successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Close the alert after 1.5 seconds
       });
+    },
+    showErrorAlert() {
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed to remove item from cart. Please try again.',
+        text: 'An error occurred while removing the item from the cart.',
+        background: "#995C23",
+            color: "black",
+      });
+    },
   },
-  },
-}
+};
 </script>
 <style scoped>
 * {

@@ -10,20 +10,20 @@
           <ul class="list-unstyled mb-0">
           <li>
             <div class="form-floating mb-3">
-  <input type="name" name="name" class="form-control" id="floatingInput" placeholder="Your name" required>
-  <label for="floatingInput">Full Name</label>
+  <input type="name" name="Fullname" class="form-control" id="Fullname" placeholder="Your name" v-model="formData.name" required>
+  <label for="Fullname">Full Name</label>
 </div>
           </li>
           <li>
             <div class="form-floating mb-3">
-  <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-  <label for="floatingInput">Email address</label>
+  <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" v-model="formData.email" required>
+  <label for="Email">Email address</label>
 </div>
           </li>
           <li>
             <div class="form-floating">
-  <textarea name="message" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" required ></textarea>
-  <label for="floatingTextarea" >Comments</label>
+  <textarea name="message" class="form-control" placeholder="Leave a comment here" id="message" v-model="formData.message" required ></textarea>
+  <label for="Message" >Comments</label>
 </div>
           </li>
           <li>
@@ -36,9 +36,47 @@
     </div>
 </template>
 <script>
+import Swal from "sweetalert2";
 export default {
-    
-}
+  data() {
+    return {
+      formData: {
+        name: "",
+        email: "",
+        message: "",
+      },
+    };
+  },
+  methods: {
+    async submitForm() {
+      // Validate the form data here
+      if (
+        !this.formData.name ||
+        !this.formData.email ||
+        !this.formData.message
+      ) {
+        await Swal.fire({
+          icon: "error",
+          title: "Error",
+          color: "white",
+          background: "#86bbd8",
+          text: "Please fill in all fields",
+        });
+        return;
+      }
+
+      // Show a success SweetAlert after successful submission
+      await Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Form submitted successfully!",
+        confirmButtonText: "OK",
+        background: "#86bbd8",
+        color: "white",
+      });
+    },
+  },
+};
 </script>
 <style scoped>
 

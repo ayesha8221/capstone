@@ -85,18 +85,29 @@ export default {
             icon: "success",
             title: "Registration successful",
             text: "You are now registered, please log in",
+            background: "#995C23",
+            color: "black",
           });
         } else {
           await Swal.fire({
             icon: "error",
             title: "Registration failed",
             text: resp.error || "Unexpected error",
+            background: "#995C23",
+            color: "black",
           });
         }
         this.$router.push("/login");
       } catch (e) {
-        console.error("Registration error: ", e);
-      }
+      
+      await Swal.fire({
+        icon: "error",
+        background: "#86bbd8",
+        color: "white",
+        title: "Registration failed",
+        text: e.response?.data?.error || "Unexpected error",
+      });
+    }
     },
   },
 };

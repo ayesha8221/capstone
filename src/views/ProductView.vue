@@ -19,41 +19,60 @@
     </div>
     <loading-spinner v-else />  
   </template>
-  <script>
-  import LoadingSpinner from '@/components/LoadingSpinner.vue'
   
-  export default {
-    computed: {
-      product() {
-        return this.$store.state.product
-      },
-      id() {
-        return this.$route.params.id
-      },
-      userData() {
+<script>
+import Swal from 'sweetalert2';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
+
+export default {
+  computed: {
+    product() {
+      return this.$store.state.product;
+    },
+    id() {
+      return this.$route.params.id;
+    },
+    userData() {
       return this.$store.state.userData;
     },
-    },
-    mounted() {
-      this.$store.dispatch("getProduct", this.id)
-    },
-    methods: {
-        addToCart(prodID) {
+  },
+  mounted() {
+    this.$store.dispatch("getProduct", this.id);
+  },
+  methods: {
+    addToCart(prodID) {
       // Ensure the user is logged in
       if (this.userData && this.userData.userID) {
         // Call the addToCart action with userID and prodID
         this.$store.dispatch('addToCart', {
           userID: this.userData.userID,
           prodID,
+        })
+        .then(() => {
+          this.showSuccessAlert();
+        })
+        .catch((error) => {
+          console.error('Error adding product to cart:', error);
+          // Handle the error and show an error message here if needed
         });
       } else {
         // Handle the case where the user is not logged in, prompt for login, etc.
       }
     },
+    showSuccessAlert() {
+      Swal.fire({
+        icon: 'success',
+        title: 'Product added to cart successfully!',
+        background: "#995C23",
+            color: "black",
+        showConfirmButton: false,
+        timer: 1500, // Close the alert after 1.5 seconds
+      });
     },
-    components: { LoadingSpinner },
-  }
-  </script>
+  },
+  components: { LoadingSpinner },
+};
+</script>
 <style scoped>
 * {
     background-color:#E4C2A2 ;

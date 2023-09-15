@@ -80,22 +80,22 @@
       </div>
     </div>
     </template>
-    <script>
+<script>
+import Swal from 'sweetalert2';
 
-    
-    export default {
-        data() {
-            return {
-                    prodName: '',
-                    quantity: '',
-                    amount: '',
-                    category: '',
-                    description:'',
-                    flavour:'',
-                    prodUrl: ''
-            }
-        },
-        methods: {
+export default {
+  data() {
+    return {
+      prodName: '',
+      quantity: '',
+      amount: '',
+      category: '',
+      description: '',
+      flavour: '',
+      prodUrl: '',
+    };
+  },
+  methods: {
     async addProduct() {
       const productData = {
         prodName: this.prodName,
@@ -109,24 +109,43 @@
 
       const success = await this.$store.dispatch('addProduct', productData);
 
-if (success) {
-  alert('Product added successfully!');
-  this.prodName = '';
-  this.quantity = '';
-  this.amount = '';
-  this.category = '';
-  this.description = '';
-  this.flavour = '';
-  this.prodUrl = '';
-  this.$router.push('/admin');
-} else {
-  alert('Failed to add product. Please try again.');
-}
-},
-},
-    };
-    
-    </script>
+      if (success) {
+        this.showSuccessAlert();
+        this.clearForm();
+        this.$router.push('/admin');
+      } else {
+        this.showErrorAlert();
+      }
+    },
+    showSuccessAlert() {
+      Swal.fire({
+        icon: 'success',
+        title: 'Product added successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Close the alert after 1.5 seconds
+      });
+    },
+    showErrorAlert() {
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed to add product. Please try again.',
+        text: 'An error occurred while adding the product.',
+        background: "#995C23",
+            color: "black",
+      });
+    },
+    clearForm() {
+      this.prodName = '';
+      this.quantity = '';
+      this.amount = '';
+      this.category = '';
+      this.description = '';
+      this.flavour = '';
+      this.prodUrl = '';
+    },
+  },
+};
+</script>
     <style scoped>
 
    .container {

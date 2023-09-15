@@ -79,6 +79,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
@@ -109,17 +111,32 @@ export default {
       // Dispatch the action to update the product
       this.$store.dispatch('updateProduct', data)
         .then(success => {
-          console.log('updatedProduct', data);
           if (success) {
+            this.showSuccessAlert();
             this.$router.push("/admin");
-            // success message
           } else {
-            // failed message
+            this.showErrorAlert();
           }
         })
         .catch(error => {
           console.error(error);
+          this.showErrorAlert();
         });
+    },
+    showSuccessAlert() {
+      Swal.fire({
+        icon: 'success',
+        title: 'Product updated successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Close the alert after 1.5 seconds
+      });
+    },
+    showErrorAlert() {
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed to update product. Please try again.',
+        text: 'An error occurred while updating the product.',
+      });
     },
   },
   props: ["id"],

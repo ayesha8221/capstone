@@ -1,6 +1,6 @@
 <template lang="">
     
-<nav class="text-align-center" >
+<nav class="text-align-center fixed-top" >
         
 <div class="nav align-items-center">
     <img class="logo" src="https://i.postimg.cc/vmZb6BwS/23-removebg-preview.png" alt="Bootstrap" width="80" height="" >
@@ -37,7 +37,11 @@
 <div>
   
 </div>
+
 </nav>
+<br>
+<br>
+<br>
 
 </template>
 <script>
@@ -183,7 +187,7 @@ margin-right: 10px;
     font-size: 20px;
     font-weight: bold;
     -webkit-text-stroke: 0.2px #E4C2A2;
-    margin-right: 0;
+    margin-right: 0 !important;
 }
 
 .cart {

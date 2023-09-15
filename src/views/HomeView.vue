@@ -453,6 +453,52 @@ h5{
 
 }
 
+@media screen and (max-width: 320px) {
+  .featured {
+    height: 1450px;
+    padding-bottom: 15px;
+  }
+
+  .cont .content {
+  /* right: 1%; */
+}
+
+.conta .bttn {
+    top: 5% !important;
+    /* right: 4%; */
+    font-size: 15px;
+    padding: 6px 6px 6px 6px
+  }
+
+  .carousel{
+    display: none;
+  }
+
+  p{
+    display: none;
+  }
+
+  img.beans{
+    display:none;
+  }
+
+  button.btn {
+    display: none;
+  }
+
+  button.bttn {
+    /* display:none; */
+    top: 5% !important;
+  }
+
+  .column1 {
+    display: none;
+  }
+
+  .conta {
+    display: flex;
+  }
+}
 
 
 /* img.picture {

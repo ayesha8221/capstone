@@ -136,4 +136,5 @@ module.exports = {
     updateUserByID,
     deleteUserByID,
     userLogin
+    checkEmailExists
   };

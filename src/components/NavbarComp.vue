@@ -202,9 +202,9 @@ margin-right: 10px;
     justify-content: center !important;
   }
   .nav-link {
-    font-size: 16px; /* Adjust font size for smaller screens */
-    margin: 10px 20px 0 5px;
-    padding: 0;
+    font-size: 16px !important; /* Adjust font size for smaller screens */
+    margin: 10px 20px 0 5px !important;
+    padding: 0 !important;
   }
   .nav img {
     width: 40px; /* Adjust logo size for smaller screens */

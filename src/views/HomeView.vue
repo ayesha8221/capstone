@@ -464,7 +464,7 @@ h5{
 }
 
   .conta .bttn {
-    top: 37% !important;
+    top: 33% !important;
     right: 24%;
     font-size: 15px;
     padding: 6px 6px 6px 6px;

@@ -42,7 +42,7 @@ const insertUser = (data, result) => {
 
 //check email already exists in database
 const checkEmailExists = (email, result) => {
-  db.query("SELECT * FROM users WHERE emailAdd = ?", [email], (err, results) => {
+  db.query("SELECT * FROM Users WHERE emailAdd = ?", [email], (err, results) => {
     if (err) {
       console.log(err);
       result(err, null);

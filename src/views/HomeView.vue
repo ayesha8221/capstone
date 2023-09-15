@@ -460,14 +460,14 @@ h5{
   }
 
   .cont .content {
-  /* right: 1%; */
+  /* right: 6px; */
 }
 
-.conta .bttn {
-    top: 5% !important;
-    /* right: 4%; */
+  .conta .bttn {
+    top: 37% !important;
+    right: 24%;
     font-size: 15px;
-    padding: 6px 6px 6px 6px
+    padding: 6px 6px 6px 6px;
   }
 
   .carousel{
@@ -488,16 +488,20 @@ h5{
 
   button.bttn {
     /* display:none; */
-    top: 5% !important;
+    /* top: 30% !important; */
   }
 
   .column1 {
-    display: none;
+    /* display: none; */
+    height: 0;
   }
 
-  .conta {
-    display: flex;
+  h4 {
+    color: #3C6866;
+    -webkit-text-stroke: 1.2px #462507;
+    font-size: 36px;
   }
+
 }
 
 

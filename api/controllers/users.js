@@ -51,23 +51,59 @@ const showUserById = (req, res) => {
 // Add New User
 const createUser = (req, res) => {
   const data = req.body;
-  data.userPass = bcrypt.hashSync(data.userPass, 10);
-  const user = {
-    emailAdd: data.emailAdd,
-    userPass: data.userPass,
-  };
-  let token = createToken(user);
-  // if (!data.userPass) {
-  //   return res.status(400).json({ error: "Password is required." });
-  // }
-   
-  // Check if userPass is provided in the request body
-  insertUser(data, (err, results) => {
-    if (err) throw err;
-    res.cookie("authorizedUser", token, {maxAge: 3600000, httpOnly: true});
-    res.json({results, token})
+  // Check if userPass and emailAdd are provided in the request body
+  if (!data.userPass || !data.emailAdd) {
+    return res.status(400).json({ error: "Both email and password are required." });
+  }
+
+  // Check if the email already exists in the database
+  checkEmailExists(data.emailAdd, (err, emailExists) => {
+    if (err) {
+      return res.status(500).json({ error: "An error occurred while checking the email." });
+    }
+
+    if (emailExists) {
+      return res.status(409).json({ error: "Email address already exists." });
+    }
+
+    // Hash the password
+    data.userPass = bcrypt.hashSync(data.userPass, 10);
+    const user = {
+      emailAdd: data.emailAdd,
+      userPass: data.userPass,
+    };
+
+    let token = createToken(user);
+
+    // Insert the user into the database
+    insertUser(data, (err, results) => {
+      if (err) {
+        return res.status(500).json({ error: "An error occurred while creating the user." });
+      } else {
+        return res.status(201).json({ token, results });
+      }
+    });
   });
 };
+// const createUser = (req, res) => {
+//   const data = req.body;
+//   data.userPass = bcrypt.hashSync(data.userPass, 10);
+//   const user = {
+//     emailAdd: data.emailAdd,
+//     userPass: data.userPass,
+//   };
+//   let token = createToken(user);
+//   // if (!data.userPass) {
+//   //   return res.status(400).json({ error: "Password is required." });
+//   // }
+   
+//   // Check if userPass is provided in the request body
+//   insertUser(data, (err, results) => {
+//     if (err) throw err;
+//     res.cookie("authorizedUser", token, {maxAge: 3600000, httpOnly: true});
+//     res.json({results, token})
+//   });
+// };
 
 // delete a user
 const deleteUser = (req, res) => {

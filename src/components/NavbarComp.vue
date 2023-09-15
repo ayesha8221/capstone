@@ -3,10 +3,11 @@
 <nav class="text-align-center" >
         
 <div class="nav align-items-center">
-    <img src="https://i.postimg.cc/vmZb6BwS/23-removebg-preview.png" alt="Bootstrap" width="80" height="" >
+    <img class="logo" src="https://i.postimg.cc/vmZb6BwS/23-removebg-preview.png" alt="Bootstrap" width="80" height="" >
     <a class="nav-link" aria-current="page" href="/">Home</a>
   <li><router-link to="/about" class="nav-link">About</router-link></li>
   <li><router-link to="/products" class="nav-link">Products</router-link></li>
+  <li><router-link to="/contact" class="nav-link">Contact</router-link></li>
   <li v-show="userRole === 'Admin'" ><router-link to="/admin" class="nav-link">Admin</router-link></li>
       <li v-show="!userData" ><router-link class="smol" to="/login">Login</router-link></li>
       <li v-show="!userData" ><router-link class="smol" to="/register">Register</router-link></li>
@@ -182,7 +183,7 @@ margin-right: 10px;
     font-size: 20px;
     font-weight: bold;
     -webkit-text-stroke: 0.2px #E4C2A2;
-    margin-right: 25px;
+    margin-right: 0;
 }
 
 .cart {
@@ -196,19 +197,18 @@ margin-right: 10px;
 @media screen and (max-width: 320px) {
   .nav {
     /* margin: 100px; */
-    padding: 0 0 100px 0;
+    padding: 0 0 80px 0;
     display: flex;
     justify-content: center !important;
   }
   .nav-link {
     font-size: 16px; /* Adjust font size for smaller screens */
-    margin-right: 5px;
+    margin: 10px 20px 0 5px;
+    padding: 0;
   }
   .nav img {
-    width: 50px; /* Adjust logo size for smaller screens */
+    width: 40px; /* Adjust logo size for smaller screens */
   }
-  /* You can further adjust styles as needed */
-
   .cart, .logout {
     height: auto;
     width: 30px !important;
@@ -220,6 +220,21 @@ margin-right: 10px;
     width: 40px !important;
     justify-content: center !important;
   }
+
+ img.logo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-link {
+    color: #995C23;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-text-stroke: 0.2px #E4C2A2;
+    margin-right: 25px;
+}
+
 }
     
 </style>

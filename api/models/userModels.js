@@ -40,6 +40,18 @@ const insertUser = (data, result) => {
     });   
 }
 
+//check email already exists in database
+const checkEmailExists = (email, result) => {
+  db.query("SELECT * FROM users WHERE emailAdd = ?", [email], (err, results) => {
+    if (err) {
+      console.log(err);
+      result(err, null);
+    } else {
+      result(null, results.length > 0);
+    }
+  });
+};
+
  const userLogin = (req, res) => {
     const { emailAdd, userPass } = req.body;
     const query = `SELECT userID, firstName, lastName, userRole, emailAdd, userPass, userProfile FROM Users WHERE emailAdd = '${emailAdd}'`;
